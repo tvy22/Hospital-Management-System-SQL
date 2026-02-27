@@ -64,6 +64,12 @@
     <Compile Include="Forms\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UC_CheckInOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UC_CheckInOut.Designer.cs">
+      <DependentUpon>UC_CheckInOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UC_Doctors.cs">
       <SubType>UserControl</SubType>
     </Compile>

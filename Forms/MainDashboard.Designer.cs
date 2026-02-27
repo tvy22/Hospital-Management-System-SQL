@@ -99,6 +99,7 @@
             this.btnPatients.Text = "   Patients";
             this.btnPatients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPatients.UseVisualStyleBackColor = true;
+            this.btnPatients.Click += new System.EventHandler(this.btnPatients_Click);
             // 
             // btnDoctors
             // 
@@ -140,7 +141,6 @@
             // 
             // MainDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.pnlContent);

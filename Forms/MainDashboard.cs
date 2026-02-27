@@ -41,5 +41,14 @@ namespace Hospital_Management_System.Forms
             pnlContent.Controls.Add(ucDoctors);
             ucDoctors.BringToFront();
         }
+
+        private void btnPatients_Click(object sender, EventArgs e)
+        {
+            pnlContent.Controls.Clear();
+            UC_Patients ucPatients = new UC_Patients();
+            ucPatients.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(ucPatients);
+            ucPatients.BringToFront();
+        }
     }
 }
