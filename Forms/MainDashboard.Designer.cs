@@ -83,6 +83,7 @@
             this.btnAppointments.Text = "   Check-in/out";
             this.btnAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAppointments.UseVisualStyleBackColor = true;
+            this.btnAppointments.Click += new System.EventHandler(this.btnAppointments_Click);
             // 
             // btnPatients
             // 

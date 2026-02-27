@@ -50,5 +50,14 @@ namespace Hospital_Management_System.Forms
             pnlContent.Controls.Add(ucPatients);
             ucPatients.BringToFront();
         }
+
+        private void btnAppointments_Click(object sender, EventArgs e)
+        {
+            pnlContent.Controls.Clear();
+            UC_CheckInOut ucCheckInOut = new UC_CheckInOut();
+            ucCheckInOut.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(ucCheckInOut);
+            ucCheckInOut.BringToFront();
+        }
     }
 }

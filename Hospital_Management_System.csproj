@@ -96,6 +96,9 @@
     <EmbeddedResource Include="Forms\MainDashboard.resx">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UC_CheckInOut.resx">
+      <DependentUpon>UC_CheckInOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UC_Doctors.resx">
       <DependentUpon>UC_Doctors.cs</DependentUpon>
     </EmbeddedResource>
