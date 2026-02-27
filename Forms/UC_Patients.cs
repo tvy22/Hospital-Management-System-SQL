@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace Hospital_Management_System.Forms
 {
-    public partial class UC_Doctors : UserControl
+    public partial class UC_Patients : UserControl
     {
-
-        public UC_Doctors()
+        public UC_Patients()
         {
             InitializeComponent();
         }
