@@ -27,7 +27,8 @@ namespace Hospital_Management_System.Forms
             this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtSpeciality = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cmbSpeciality = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.flpSpecialities = new System.Windows.Forms.FlowLayoutPanel();
             this.txtRoom = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.rbMale = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -80,7 +81,8 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.Controls.Add(this.txtName);
             this.pnlCard.Controls.Add(this.txtPhone);
             this.pnlCard.Controls.Add(this.txtEmail);
-            this.pnlCard.Controls.Add(this.txtSpeciality);
+            this.pnlCard.Controls.Add(this.cmbSpeciality);
+            this.pnlCard.Controls.Add(this.flpSpecialities);
             this.pnlCard.Controls.Add(this.txtRoom);
             this.pnlCard.Controls.Add(this.dtpDOB);
             this.pnlCard.Controls.Add(this.rbMale);
@@ -127,7 +129,8 @@ namespace Hospital_Management_System.Forms
             this.txtID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtID.DefaultText = "";
             this.txtID.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.txtID.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtID.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.txtID.Location = new System.Drawing.Point(170, 30);
             this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtID.Name = "txtID";
@@ -142,7 +145,8 @@ namespace Hospital_Management_System.Forms
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtName.DefaultText = "";
             this.txtName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.txtName.Location = new System.Drawing.Point(170, 80);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
@@ -157,7 +161,8 @@ namespace Hospital_Management_System.Forms
             this.txtPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPhone.DefaultText = "";
             this.txtPhone.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.txtPhone.Location = new System.Drawing.Point(420, 80);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.Name = "txtPhone";
@@ -172,7 +177,8 @@ namespace Hospital_Management_System.Forms
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail.DefaultText = "";
             this.txtEmail.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.txtEmail.Location = new System.Drawing.Point(420, 30);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
@@ -181,20 +187,38 @@ namespace Hospital_Management_System.Forms
             this.txtEmail.Size = new System.Drawing.Size(220, 36);
             this.txtEmail.TabIndex = 5;
             // 
-            // txtSpeciality
+            // cmbSpeciality
             // 
-            this.txtSpeciality.BorderRadius = 8;
-            this.txtSpeciality.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSpeciality.DefaultText = "";
-            this.txtSpeciality.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.txtSpeciality.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSpeciality.Location = new System.Drawing.Point(170, 130);
-            this.txtSpeciality.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSpeciality.Name = "txtSpeciality";
-            this.txtSpeciality.PlaceholderText = "Speciality";
-            this.txtSpeciality.SelectedText = "";
-            this.txtSpeciality.Size = new System.Drawing.Size(220, 36);
-            this.txtSpeciality.TabIndex = 6;
+            this.cmbSpeciality.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSpeciality.BorderRadius = 8;
+            this.cmbSpeciality.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbSpeciality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSpeciality.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.cmbSpeciality.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbSpeciality.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbSpeciality.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbSpeciality.ItemHeight = 30;
+            this.cmbSpeciality.Items.AddRange(new object[] {
+            "Select Speciality",
+            "Cardiology",
+            "Dermatology",
+            "Pediatrics",
+            "Neurology",
+            "Orthopedics",
+            "General Medicine"});
+            this.cmbSpeciality.Location = new System.Drawing.Point(170, 130);
+            this.cmbSpeciality.Name = "cmbSpeciality";
+            this.cmbSpeciality.Size = new System.Drawing.Size(220, 36);
+            this.cmbSpeciality.StartIndex = 0;
+            this.cmbSpeciality.TabIndex = 6;
+            // 
+            // flpSpecialities
+            // 
+            this.flpSpecialities.AutoScroll = true;
+            this.flpSpecialities.Location = new System.Drawing.Point(170, 186);
+            this.flpSpecialities.Name = "flpSpecialities";
+            this.flpSpecialities.Size = new System.Drawing.Size(220, 50);
+            this.flpSpecialities.TabIndex = 16;
             // 
             // txtRoom
             // 
@@ -202,7 +226,8 @@ namespace Hospital_Management_System.Forms
             this.txtRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRoom.DefaultText = "";
             this.txtRoom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.txtRoom.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtRoom.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.txtRoom.Location = new System.Drawing.Point(420, 130);
             this.txtRoom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtRoom.Name = "txtRoom";
@@ -218,7 +243,7 @@ namespace Hospital_Management_System.Forms
             this.dtpDOB.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.dtpDOB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDOB.Location = new System.Drawing.Point(170, 180);
+            this.dtpDOB.Location = new System.Drawing.Point(420, 180);
             this.dtpDOB.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDOB.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDOB.Name = "dtpDOB";
@@ -262,12 +287,14 @@ namespace Hospital_Management_System.Forms
             this.cmbStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbStatus.ItemHeight = 30;
             this.cmbStatus.Items.AddRange(new object[] {
+            "Select Status",
             "Available",
             "Busy",
             "On Leave"});
             this.cmbStatus.Location = new System.Drawing.Point(670, 30);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(220, 36);
+            this.cmbStatus.StartIndex = 0;
             this.cmbStatus.TabIndex = 11;
             // 
             // shift
@@ -282,12 +309,14 @@ namespace Hospital_Management_System.Forms
             this.shift.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.shift.ItemHeight = 30;
             this.shift.Items.AddRange(new object[] {
+            "Select Shift",
             "Morning",
             "Afternoon",
             "Night"});
             this.shift.Location = new System.Drawing.Point(670, 80);
             this.shift.Name = "shift";
             this.shift.Size = new System.Drawing.Size(220, 36);
+            this.shift.StartIndex = 0;
             this.shift.TabIndex = 12;
             // 
             // btnSave
@@ -345,17 +374,17 @@ namespace Hospital_Management_System.Forms
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvDoctors.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDoctors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDoctors.ColumnHeadersHeight = 40;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -366,6 +395,7 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.Name = "dgvDoctors";
             this.dgvDoctors.RowHeadersVisible = false;
             this.dgvDoctors.RowHeadersWidth = 51;
+            this.dgvDoctors.RowTemplate.Height = 35;
             this.dgvDoctors.Size = new System.Drawing.Size(920, 245);
             this.dgvDoctors.TabIndex = 3;
             this.dgvDoctors.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -375,10 +405,10 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgvDoctors.ThemeStyle.BackColor = System.Drawing.Color.White;
             this.dgvDoctors.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDoctors.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvDoctors.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.dgvDoctors.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvDoctors.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvDoctors.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvDoctors.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.dgvDoctors.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
             this.dgvDoctors.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDoctors.ThemeStyle.HeaderStyle.Height = 40;
             this.dgvDoctors.ThemeStyle.ReadOnly = false;
@@ -386,12 +416,13 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDoctors.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvDoctors.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvDoctors.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvDoctors.ThemeStyle.RowsStyle.Height = 35;
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // UC_Doctors
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.pnlMain);
             this.Name = "UC_Doctors";
             this.Size = new System.Drawing.Size(980, 750);
@@ -409,10 +440,11 @@ namespace Hospital_Management_System.Forms
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox picDoctor;
         private Guna2Button btnUpload, btnSave, btnUpdate, btnDelete;
-        private Guna2TextBox txtID, txtName, txtPhone, txtEmail, txtSpeciality, txtRoom, txtSearch;
+        private Guna2TextBox txtID, txtName, txtPhone, txtEmail, txtRoom, txtSearch;
         private Guna2DateTimePicker dtpDOB;
         private Guna2RadioButton rbMale, rbFemale;
-        private Guna2ComboBox shift, cmbStatus;
+        private Guna2ComboBox shift, cmbStatus, cmbSpeciality;
+        private System.Windows.Forms.FlowLayoutPanel flpSpecialities;
         private Guna2DataGridView dgvDoctors;
     }
 }
