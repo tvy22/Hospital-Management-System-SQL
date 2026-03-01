@@ -33,6 +33,8 @@ namespace Hospital_Management_System.Forms
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvPatients = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.txtDOB = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -67,6 +69,8 @@ namespace Hospital_Management_System.Forms
             // 
             this.pnlCard.BackColor = System.Drawing.Color.Transparent;
             this.pnlCard.BorderRadius = 20;
+            this.pnlCard.Controls.Add(this.guna2HtmlLabel1);
+            this.pnlCard.Controls.Add(this.txtDOB);
             this.pnlCard.Controls.Add(this.txtID);
             this.pnlCard.Controls.Add(this.txtName);
             this.pnlCard.Controls.Add(this.txtPhone);
@@ -78,7 +82,7 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.Controls.Add(this.btnUpdate);
             this.pnlCard.Controls.Add(this.btnDelete);
             this.pnlCard.FillColor = System.Drawing.Color.White;
-            this.pnlCard.Location = new System.Drawing.Point(30, 85);
+            this.pnlCard.Location = new System.Drawing.Point(30, 84);
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.ShadowDecoration.BorderRadius = 20;
             this.pnlCard.ShadowDecoration.Color = System.Drawing.Color.Gainsboro;
@@ -108,12 +112,12 @@ namespace Hospital_Management_System.Forms
             this.txtName.DefaultText = "";
             this.txtName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtName.Location = new System.Drawing.Point(250, 30);
+            this.txtName.Location = new System.Drawing.Point(31, 84);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
             this.txtName.PlaceholderText = "Full Name";
             this.txtName.SelectedText = "";
-            this.txtName.Size = new System.Drawing.Size(350, 36);
+            this.txtName.Size = new System.Drawing.Size(447, 36);
             this.txtName.TabIndex = 1;
             // 
             // txtPhone
@@ -123,12 +127,12 @@ namespace Hospital_Management_System.Forms
             this.txtPhone.DefaultText = "";
             this.txtPhone.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPhone.Location = new System.Drawing.Point(620, 30);
+            this.txtPhone.Location = new System.Drawing.Point(514, 30);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PlaceholderText = "Phone Number";
             this.txtPhone.SelectedText = "";
-            this.txtPhone.Size = new System.Drawing.Size(270, 36);
+            this.txtPhone.Size = new System.Drawing.Size(376, 36);
             this.txtPhone.TabIndex = 2;
             // 
             // txtMedHistory
@@ -138,13 +142,13 @@ namespace Hospital_Management_System.Forms
             this.txtMedHistory.DefaultText = "";
             this.txtMedHistory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.txtMedHistory.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMedHistory.Location = new System.Drawing.Point(30, 140);
+            this.txtMedHistory.Location = new System.Drawing.Point(32, 141);
             this.txtMedHistory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMedHistory.Multiline = true;
             this.txtMedHistory.Name = "txtMedHistory";
             this.txtMedHistory.PlaceholderText = "Medical History Details...";
             this.txtMedHistory.SelectedText = "";
-            this.txtMedHistory.Size = new System.Drawing.Size(860, 80);
+            this.txtMedHistory.Size = new System.Drawing.Size(446, 144);
             this.txtMedHistory.TabIndex = 3;
             // 
             // dtpDOB
@@ -154,11 +158,11 @@ namespace Hospital_Management_System.Forms
             this.dtpDOB.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.dtpDOB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDOB.Location = new System.Drawing.Point(30, 85);
+            this.dtpDOB.Location = new System.Drawing.Point(651, 84);
             this.dtpDOB.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDOB.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(200, 36);
+            this.dtpDOB.Size = new System.Drawing.Size(239, 36);
             this.dtpDOB.TabIndex = 4;
             this.dtpDOB.Value = new System.DateTime(2026, 2, 27, 15, 10, 3, 789);
             // 
@@ -167,7 +171,7 @@ namespace Hospital_Management_System.Forms
             this.rbMale.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             this.rbMale.CheckedState.BorderThickness = 0;
             this.rbMale.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
-            this.rbMale.Location = new System.Drawing.Point(260, 92);
+            this.rbMale.Location = new System.Drawing.Point(653, 148);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(104, 24);
             this.rbMale.TabIndex = 5;
@@ -179,7 +183,7 @@ namespace Hospital_Management_System.Forms
             this.rbFemale.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             this.rbFemale.CheckedState.BorderThickness = 0;
             this.rbFemale.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
-            this.rbFemale.Location = new System.Drawing.Point(364, 92);
+            this.rbFemale.Location = new System.Drawing.Point(757, 148);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(104, 24);
             this.rbFemale.TabIndex = 6;
@@ -192,7 +196,7 @@ namespace Hospital_Management_System.Forms
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(540, 240);
+            this.btnSave.Location = new System.Drawing.Point(514, 240);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 45);
             this.btnSave.TabIndex = 7;
@@ -204,7 +208,7 @@ namespace Hospital_Management_System.Forms
             this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(660, 240);
+            this.btnUpdate.Location = new System.Drawing.Point(651, 240);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(110, 45);
             this.btnUpdate.TabIndex = 8;
@@ -286,6 +290,28 @@ namespace Hospital_Management_System.Forms
             this.dgvPatients.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPatients.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             // 
+            // txtDOB
+            // 
+            this.txtDOB.BackColor = System.Drawing.Color.Transparent;
+            this.txtDOB.Font = new System.Drawing.Font("Varela Round", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDOB.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtDOB.Location = new System.Drawing.Point(514, 89);
+            this.txtDOB.Name = "txtDOB";
+            this.txtDOB.Size = new System.Drawing.Size(108, 24);
+            this.txtDOB.TabIndex = 10;
+            this.txtDOB.Text = "Date of Birth";
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Varela Round", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(514, 146);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(64, 24);
+            this.guna2HtmlLabel1.TabIndex = 11;
+            this.guna2HtmlLabel1.Text = "Gender";
+            // 
             // UC_Patients
             // 
             this.Controls.Add(this.pnlMain);
@@ -294,6 +320,7 @@ namespace Hospital_Management_System.Forms
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.pnlCard.ResumeLayout(false);
+            this.pnlCard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
             this.ResumeLayout(false);
 
@@ -307,5 +334,7 @@ namespace Hospital_Management_System.Forms
         private Guna2RadioButton rbMale, rbFemale;
         private Guna2Button btnSave, btnUpdate, btnDelete;
         private Guna2DataGridView dgvPatients;
+        private Guna2HtmlLabel txtDOB;
+        private Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
