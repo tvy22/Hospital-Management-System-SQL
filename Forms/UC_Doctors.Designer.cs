@@ -28,7 +28,7 @@ namespace Hospital_Management_System.Forms
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbSpeciality = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.flpSpecialities = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtFee = new Guna.UI2.WinForms.Guna2TextBox(); // New Field
             this.txtRoom = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.rbMale = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -56,7 +56,7 @@ namespace Hospital_Management_System.Forms
             this.pnlMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(980, 750);
+            this.pnlMain.Size = new System.Drawing.Size(980, 700); // Updated Height
             this.pnlMain.TabIndex = 0;
             // 
             // lblTitle
@@ -82,7 +82,7 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.Controls.Add(this.txtPhone);
             this.pnlCard.Controls.Add(this.txtEmail);
             this.pnlCard.Controls.Add(this.cmbSpeciality);
-            this.pnlCard.Controls.Add(this.flpSpecialities);
+            this.pnlCard.Controls.Add(this.txtFee); // Added to panel
             this.pnlCard.Controls.Add(this.txtRoom);
             this.pnlCard.Controls.Add(this.dtpDOB);
             this.pnlCard.Controls.Add(this.rbMale);
@@ -212,13 +212,21 @@ namespace Hospital_Management_System.Forms
             this.cmbSpeciality.StartIndex = 0;
             this.cmbSpeciality.TabIndex = 6;
             // 
-            // flpSpecialities
+            // txtFee
             // 
-            this.flpSpecialities.AutoScroll = true;
-            this.flpSpecialities.Location = new System.Drawing.Point(170, 186);
-            this.flpSpecialities.Name = "flpSpecialities";
-            this.flpSpecialities.Size = new System.Drawing.Size(220, 50);
-            this.flpSpecialities.TabIndex = 16;
+            this.txtFee.BorderRadius = 8;
+            this.txtFee.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFee.DefaultText = "";
+            this.txtFee.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.txtFee.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.txtFee.Location = new System.Drawing.Point(170, 180);
+            this.txtFee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFee.Name = "txtFee";
+            this.txtFee.PlaceholderText = "Consultation Fee";
+            this.txtFee.SelectedText = "";
+            this.txtFee.Size = new System.Drawing.Size(220, 36);
+            this.txtFee.TabIndex = 7;
             // 
             // txtRoom
             // 
@@ -234,7 +242,7 @@ namespace Hospital_Management_System.Forms
             this.txtRoom.PlaceholderText = "Room Number";
             this.txtRoom.SelectedText = "";
             this.txtRoom.Size = new System.Drawing.Size(220, 36);
-            this.txtRoom.TabIndex = 7;
+            this.txtRoom.TabIndex = 8;
             // 
             // dtpDOB
             // 
@@ -248,7 +256,7 @@ namespace Hospital_Management_System.Forms
             this.dtpDOB.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(220, 36);
-            this.dtpDOB.TabIndex = 8;
+            this.dtpDOB.TabIndex = 9;
             this.dtpDOB.Value = new System.DateTime(2026, 2, 27, 14, 21, 39, 146);
             // 
             // rbMale
@@ -259,7 +267,7 @@ namespace Hospital_Management_System.Forms
             this.rbMale.Location = new System.Drawing.Point(675, 135);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(104, 24);
-            this.rbMale.TabIndex = 9;
+            this.rbMale.TabIndex = 10;
             this.rbMale.Text = "Male";
             this.rbMale.UncheckedState.BorderThickness = 0;
             // 
@@ -271,7 +279,7 @@ namespace Hospital_Management_System.Forms
             this.rbFemale.Location = new System.Drawing.Point(760, 135);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(104, 24);
-            this.rbFemale.TabIndex = 10;
+            this.rbFemale.TabIndex = 11;
             this.rbFemale.Text = "Female";
             this.rbFemale.UncheckedState.BorderThickness = 0;
             // 
@@ -295,7 +303,7 @@ namespace Hospital_Management_System.Forms
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(220, 36);
             this.cmbStatus.StartIndex = 0;
-            this.cmbStatus.TabIndex = 11;
+            this.cmbStatus.TabIndex = 12;
             // 
             // shift
             // 
@@ -317,7 +325,7 @@ namespace Hospital_Management_System.Forms
             this.shift.Name = "shift";
             this.shift.Size = new System.Drawing.Size(220, 36);
             this.shift.StartIndex = 0;
-            this.shift.TabIndex = 12;
+            this.shift.TabIndex = 13;
             // 
             // btnSave
             // 
@@ -328,7 +336,7 @@ namespace Hospital_Management_System.Forms
             this.btnSave.Location = new System.Drawing.Point(540, 240);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 45);
-            this.btnSave.TabIndex = 13;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             // 
             // btnUpdate
@@ -340,7 +348,7 @@ namespace Hospital_Management_System.Forms
             this.btnUpdate.Location = new System.Drawing.Point(660, 240);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(110, 45);
-            this.btnUpdate.TabIndex = 14;
+            this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
             // 
             // btnDelete
@@ -352,7 +360,7 @@ namespace Hospital_Management_System.Forms
             this.btnDelete.Location = new System.Drawing.Point(780, 240);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 45);
-            this.btnDelete.TabIndex = 15;
+            this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete";
             // 
             // txtSearch
@@ -396,7 +404,7 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.RowHeadersVisible = false;
             this.dgvDoctors.RowHeadersWidth = 51;
             this.dgvDoctors.RowTemplate.Height = 35;
-            this.dgvDoctors.Size = new System.Drawing.Size(920, 245);
+            this.dgvDoctors.Size = new System.Drawing.Size(920, 205); // Updated height to fit within 700
             this.dgvDoctors.TabIndex = 3;
             this.dgvDoctors.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDoctors.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -425,7 +433,7 @@ namespace Hospital_Management_System.Forms
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.pnlMain);
             this.Name = "UC_Doctors";
-            this.Size = new System.Drawing.Size(980, 750);
+            this.Size = new System.Drawing.Size(980, 700); // Updated Height
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.pnlCard.ResumeLayout(false);
@@ -440,11 +448,10 @@ namespace Hospital_Management_System.Forms
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox picDoctor;
         private Guna2Button btnUpload, btnSave, btnUpdate, btnDelete;
-        private Guna2TextBox txtID, txtName, txtPhone, txtEmail, txtRoom, txtSearch;
+        private Guna2TextBox txtID, txtName, txtPhone, txtEmail, txtRoom, txtSearch, txtFee; // Added txtFee
         private Guna2DateTimePicker dtpDOB;
         private Guna2RadioButton rbMale, rbFemale;
         private Guna2ComboBox shift, cmbStatus, cmbSpeciality;
-        private System.Windows.Forms.FlowLayoutPanel flpSpecialities;
         private Guna2DataGridView dgvDoctors;
     }
 }
