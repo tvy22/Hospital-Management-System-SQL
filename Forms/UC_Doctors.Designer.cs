@@ -40,7 +40,6 @@ namespace Hospital_Management_System.Forms
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvDoctors = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDoctor)).BeginInit();
@@ -76,7 +75,6 @@ namespace Hospital_Management_System.Forms
             // 
             this.pnlCard.BackColor = System.Drawing.Color.Transparent;
             this.pnlCard.BorderRadius = 20;
-            this.pnlCard.Controls.Add(this.guna2RadioButton1);
             this.pnlCard.Controls.Add(this.picDoctor);
             this.pnlCard.Controls.Add(this.btnUpload);
             this.pnlCard.Controls.Add(this.txtID);
@@ -430,18 +428,6 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // guna2RadioButton1
-            // 
-            this.guna2RadioButton1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
-            this.guna2RadioButton1.CheckedState.BorderThickness = 0;
-            this.guna2RadioButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
-            this.guna2RadioButton1.Location = new System.Drawing.Point(670, 180);
-            this.guna2RadioButton1.Name = "guna2RadioButton1";
-            this.guna2RadioButton1.Size = new System.Drawing.Size(104, 24);
-            this.guna2RadioButton1.TabIndex = 17;
-            this.guna2RadioButton1.Text = "child";
-            this.guna2RadioButton1.UncheckedState.BorderThickness = 0;
-            // 
             // UC_Doctors
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
@@ -467,6 +453,5 @@ namespace Hospital_Management_System.Forms
         private Guna2RadioButton rbMale, rbFemale;
         private Guna2ComboBox shift, cmbStatus, cmbSpeciality;
         private Guna2DataGridView dgvDoctors;
-        private Guna2RadioButton guna2RadioButton1;
     }
 }
