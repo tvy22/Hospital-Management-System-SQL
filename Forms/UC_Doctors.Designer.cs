@@ -28,7 +28,7 @@ namespace Hospital_Management_System.Forms
             this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbSpeciality = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtFee = new Guna.UI2.WinForms.Guna2TextBox(); // New Field
+            this.txtFee = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtRoom = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.rbMale = new Guna.UI2.WinForms.Guna2RadioButton();
@@ -40,6 +40,7 @@ namespace Hospital_Management_System.Forms
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvDoctors = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2RadioButton1 = new Guna.UI2.WinForms.Guna2RadioButton();
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDoctor)).BeginInit();
@@ -56,7 +57,7 @@ namespace Hospital_Management_System.Forms
             this.pnlMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(980, 700); // Updated Height
+            this.pnlMain.Size = new System.Drawing.Size(980, 700);
             this.pnlMain.TabIndex = 0;
             // 
             // lblTitle
@@ -75,6 +76,7 @@ namespace Hospital_Management_System.Forms
             // 
             this.pnlCard.BackColor = System.Drawing.Color.Transparent;
             this.pnlCard.BorderRadius = 20;
+            this.pnlCard.Controls.Add(this.guna2RadioButton1);
             this.pnlCard.Controls.Add(this.picDoctor);
             this.pnlCard.Controls.Add(this.btnUpload);
             this.pnlCard.Controls.Add(this.txtID);
@@ -82,7 +84,7 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.Controls.Add(this.txtPhone);
             this.pnlCard.Controls.Add(this.txtEmail);
             this.pnlCard.Controls.Add(this.cmbSpeciality);
-            this.pnlCard.Controls.Add(this.txtFee); // Added to panel
+            this.pnlCard.Controls.Add(this.txtFee);
             this.pnlCard.Controls.Add(this.txtRoom);
             this.pnlCard.Controls.Add(this.dtpDOB);
             this.pnlCard.Controls.Add(this.rbMale);
@@ -404,7 +406,7 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.RowHeadersVisible = false;
             this.dgvDoctors.RowHeadersWidth = 51;
             this.dgvDoctors.RowTemplate.Height = 35;
-            this.dgvDoctors.Size = new System.Drawing.Size(920, 205); // Updated height to fit within 700
+            this.dgvDoctors.Size = new System.Drawing.Size(920, 205);
             this.dgvDoctors.TabIndex = 3;
             this.dgvDoctors.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDoctors.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -428,12 +430,24 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // guna2RadioButton1
+            // 
+            this.guna2RadioButton1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
+            this.guna2RadioButton1.CheckedState.BorderThickness = 0;
+            this.guna2RadioButton1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
+            this.guna2RadioButton1.Location = new System.Drawing.Point(670, 180);
+            this.guna2RadioButton1.Name = "guna2RadioButton1";
+            this.guna2RadioButton1.Size = new System.Drawing.Size(104, 24);
+            this.guna2RadioButton1.TabIndex = 17;
+            this.guna2RadioButton1.Text = "child";
+            this.guna2RadioButton1.UncheckedState.BorderThickness = 0;
+            // 
             // UC_Doctors
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.pnlMain);
             this.Name = "UC_Doctors";
-            this.Size = new System.Drawing.Size(980, 700); // Updated Height
+            this.Size = new System.Drawing.Size(980, 700);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.pnlCard.ResumeLayout(false);
@@ -453,5 +467,6 @@ namespace Hospital_Management_System.Forms
         private Guna2RadioButton rbMale, rbFemale;
         private Guna2ComboBox shift, cmbStatus, cmbSpeciality;
         private Guna2DataGridView dgvDoctors;
+        private Guna2RadioButton guna2RadioButton1;
     }
 }
