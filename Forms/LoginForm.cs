@@ -37,8 +37,15 @@ namespace Hospital_Management_System.Forms
             else
             {
                 MessageBox.Show("Invalid username and password.", "Login Failed");
-                txtPass.Clear();
                 txtUser.Focus();
+            }
+        }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
             }
         }
     }

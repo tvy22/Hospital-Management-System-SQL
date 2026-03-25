@@ -155,8 +155,10 @@
             this.Controls.Add(this.pnlRight);
             this.Controls.Add(this.pnlLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);
             this.pnlRight.ResumeLayout(false);
             this.pnlRight.PerformLayout();
             this.ResumeLayout(false);
