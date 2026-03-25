@@ -17,8 +17,8 @@ namespace Hospital_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            Application.Run(new Hospital_Management_System.Forms.MainDashboard());
+            Application.Run(new LoginForm());
+            //Application.Run(new Hospital_Management_System.Forms.MainDashboard());
         }
     }
 }
