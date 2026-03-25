@@ -15,26 +15,27 @@ namespace Hospital_Management_System.Forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnlMain = new Guna2Panel();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.pnlCard = new Guna2Panel();
-            this.guna2HtmlLabel1 = new Guna2HtmlLabel();
-            this.txtDOB = new Guna2HtmlLabel();
-            this.txtID = new Guna2TextBox();
-            this.txtName = new Guna2TextBox();
-            this.txtPhone = new Guna2TextBox();
-            this.txtMedHistory = new Guna2TextBox();
-            this.dtpDOB = new Guna2DateTimePicker();
-            this.rbMale = new Guna2RadioButton();
-            this.rbFemale = new Guna2RadioButton();
-            this.btnSave = new Guna2Button();
-            this.btnUpdate = new Guna2Button();
-            this.btnDelete = new Guna2Button();
-            this.txtSearch = new Guna2TextBox();
-            this.dgvPatients = new Guna2DataGridView();
+            this.pnlCard = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtDOB = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtMedHistory = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.rbMale = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.rbFemale = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dgvPatients = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -69,6 +70,7 @@ namespace Hospital_Management_System.Forms
             // 
             this.pnlCard.BackColor = System.Drawing.Color.Transparent;
             this.pnlCard.BorderRadius = 20;
+            this.pnlCard.Controls.Add(this.btnClear);
             this.pnlCard.Controls.Add(this.guna2HtmlLabel1);
             this.pnlCard.Controls.Add(this.txtDOB);
             this.pnlCard.Controls.Add(this.txtID);
@@ -220,7 +222,7 @@ namespace Hospital_Management_System.Forms
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(514, 240);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 45);
+            this.btnSave.Size = new System.Drawing.Size(91, 45);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             // 
@@ -230,9 +232,9 @@ namespace Hospital_Management_System.Forms
             this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(651, 240);
+            this.btnUpdate.Location = new System.Drawing.Point(611, 240);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(110, 45);
+            this.btnUpdate.Size = new System.Drawing.Size(91, 45);
             this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "Update";
             // 
@@ -242,9 +244,9 @@ namespace Hospital_Management_System.Forms
             this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(71)))), ((int)(((byte)(87)))));
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(780, 240);
+            this.btnDelete.Location = new System.Drawing.Point(708, 240);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(110, 45);
+            this.btnDelete.Size = new System.Drawing.Size(91, 45);
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Delete";
             // 
@@ -264,25 +266,25 @@ namespace Hospital_Management_System.Forms
             // 
             // dgvPatients
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPatients.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPatients.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPatients.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPatients.Location = new System.Drawing.Point(30, 465);
             this.dgvPatients.Name = "dgvPatients";
@@ -312,6 +314,18 @@ namespace Hospital_Management_System.Forms
             this.dgvPatients.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPatients.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             // 
+            // btnClear
+            // 
+            this.btnClear.BorderRadius = 10;
+            this.btnClear.FillColor = System.Drawing.Color.DarkGray;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(805, 240);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(91, 45);
+            this.btnClear.TabIndex = 12;
+            this.btnClear.Text = "Clear";
+            // 
             // UC_Patients
             // 
             this.Controls.Add(this.pnlMain);
@@ -336,5 +350,6 @@ namespace Hospital_Management_System.Forms
         private Guna2DataGridView dgvPatients;
         private Guna2HtmlLabel txtDOB;
         private Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna2Button btnClear;
     }
 }

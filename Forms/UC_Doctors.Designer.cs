@@ -40,6 +40,7 @@ namespace Hospital_Management_System.Forms
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvDoctors = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDoctor)).BeginInit();
@@ -75,6 +76,7 @@ namespace Hospital_Management_System.Forms
             // 
             this.pnlCard.BackColor = System.Drawing.Color.Transparent;
             this.pnlCard.BorderRadius = 20;
+            this.pnlCard.Controls.Add(this.btnClear);
             this.pnlCard.Controls.Add(this.picDoctor);
             this.pnlCard.Controls.Add(this.btnUpload);
             this.pnlCard.Controls.Add(this.txtID);
@@ -333,7 +335,7 @@ namespace Hospital_Management_System.Forms
             this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(540, 240);
+            this.btnSave.Location = new System.Drawing.Point(411, 243);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 45);
             this.btnSave.TabIndex = 14;
@@ -345,7 +347,7 @@ namespace Hospital_Management_System.Forms
             this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(660, 240);
+            this.btnUpdate.Location = new System.Drawing.Point(531, 243);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(110, 45);
             this.btnUpdate.TabIndex = 15;
@@ -357,7 +359,7 @@ namespace Hospital_Management_System.Forms
             this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(71)))), ((int)(((byte)(87)))));
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(780, 240);
+            this.btnDelete.Location = new System.Drawing.Point(651, 243);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 45);
             this.btnDelete.TabIndex = 16;
@@ -428,6 +430,18 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // btnClear
+            // 
+            this.btnClear.BorderRadius = 10;
+            this.btnClear.FillColor = System.Drawing.Color.DarkGray;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(772, 243);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(110, 45);
+            this.btnClear.TabIndex = 17;
+            this.btnClear.Text = "Clear";
+            // 
             // UC_Doctors
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
@@ -453,5 +467,6 @@ namespace Hospital_Management_System.Forms
         private Guna2RadioButton rbMale, rbFemale;
         private Guna2ComboBox shift, cmbStatus, cmbSpeciality;
         private Guna2DataGridView dgvDoctors;
+        private Guna2Button btnClear;
     }
 }
