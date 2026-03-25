@@ -59,5 +59,10 @@ namespace Hospital_Management_System.Forms
             pnlContent.Controls.Add(ucCheckInOut);
             ucCheckInOut.BringToFront();
         }
+
+        private void MainDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

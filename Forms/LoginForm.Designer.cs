@@ -147,6 +147,7 @@
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // LoginForm
             // 
@@ -162,7 +163,6 @@
 
         }
 
-        // UPDATE YOUR VARIABLES AT THE BOTTOM TO INCLUDE THE LINES:
         private System.Windows.Forms.Panel pnlLeft;
         private System.Windows.Forms.Panel pnlRight;
         private System.Windows.Forms.Label lblTitle;

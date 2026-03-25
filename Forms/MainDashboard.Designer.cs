@@ -166,6 +166,7 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hospital Management System - Dashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainDashboard_FormClosed);
             this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 

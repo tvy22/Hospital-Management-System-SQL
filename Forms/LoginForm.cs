@@ -16,5 +16,30 @@ namespace Hospital_Management_System.Forms
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string user = txtUser.Text.Trim();
+            string pass = txtPass.Text.Trim();
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
+            {
+                MessageBox.Show("Please enter both username and password.", "Validation Error");
+                return;
+            }
+
+            if(user == "admin" && pass == "123")
+            {
+                this.Hide();
+                MainDashboard main = new MainDashboard();
+                main.Show();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username and password.", "Login Failed");
+                txtPass.Clear();
+                txtUser.Focus();
+            }
+        }
     }
 }
