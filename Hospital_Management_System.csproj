@@ -138,13 +138,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\user_24px.png" />
     <None Include="Resources\hospital_hero.jpg.jpg" />
     <None Include="Resources\hospital_hero2.jpg" />
-    <None Include="Resources\lock_24px.png" />
-    <None Include="Resources\lock2_24px.png" />
-    <None Include="Resources\lock_19px.png" />
-    <None Include="Resources\lock_21px.png" />
     <Content Include="Resources\login_bg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

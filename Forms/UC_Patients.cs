@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TheArtOfDevHtmlRenderer.Adapters;
+
 
 
 
@@ -14,19 +16,37 @@ namespace Hospital_Management_System.Forms
 {
     public partial class UC_Patients : UserControl
     {
-        DataTable table = new DataTable();
+        private DataTable table;
 
         public UC_Patients()
         {
             InitializeComponent();
-            InitializeTable();
+
+            SetupGrid();       // 🔥 FIX GRID
+            InitializeTable(); // 🔥 CREATE TABLE
+            ConnectEvents();   // 🔥 EVENTS
         }
 
         // =========================
-        // CREATE TABLE STRUCTURE
+        // FIX GRID (IMPORTANT)
+        // =========================
+        private void SetupGrid()
+        {
+            dgvPatients.DataSource = null;
+            dgvPatients.Columns.Clear(); // remove designer columns
+
+            dgvPatients.AutoGenerateColumns = true;
+            dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPatients.MultiSelect = false;
+        }
+
+        // =========================
+        // CREATE TABLE (MATCH DOCTOR STYLE)
         // =========================
         private void InitializeTable()
         {
+            table = new DataTable();
+
             table.Columns.Add("ID");
             table.Columns.Add("Name");
             table.Columns.Add("Phone");
@@ -38,11 +58,32 @@ namespace Hospital_Management_System.Forms
         }
 
         // =========================
-        // SAVE BUTTON
+        // CONNECT EVENTS
+        // =========================
+        private void ConnectEvents()
+        {
+            btnSave.Click += btnSave_Click;
+            btnUpdate.Click += btnUpdate_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnClear.Click += btnClear_Click;
+            dgvPatients.CellClick += dgvPatients_CellClick;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+        }
+
+        // =========================
+        // SAVE
         // =========================
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string gender = rbMale.Checked ? "Male" : "Female";
+            if (string.IsNullOrWhiteSpace(txtID.Text) ||
+                string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Please fill ID and Name!");
+                return;
+            }
+
+            string gender = rbMale.Checked ? "Male" :
+                            rbFemale.Checked ? "Female" : "";
 
             table.Rows.Add(
                 txtID.Text,
@@ -53,46 +94,59 @@ namespace Hospital_Management_System.Forms
                 txtMedHistory.Text
             );
 
-            MessageBox.Show("Patient Saved!");
+            dgvPatients.Refresh(); // 🔥 FORCE SHOW
+
+            MessageBox.Show("Saved!");
             ClearFields();
         }
 
         // =========================
-        // UPDATE BUTTON
+        // UPDATE
         // =========================
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvPatients.SelectedRows.Count > 0)
+            if (dgvPatients.CurrentRow != null)
             {
-                int row = dgvPatients.SelectedRows[0].Index;
+                int i = dgvPatients.CurrentRow.Index;
 
-                string gender = rbMale.Checked ? "Male" : "Female";
+                string gender = rbMale.Checked ? "Male" :
+                                rbFemale.Checked ? "Female" : "";
 
-                table.Rows[row]["ID"] = txtID.Text;
-                table.Rows[row]["Name"] = txtName.Text;
-                table.Rows[row]["Phone"] = txtPhone.Text;
-                table.Rows[row]["DOB"] = dtpDOB.Value.ToShortDateString();
-                table.Rows[row]["Gender"] = gender;
-                table.Rows[row]["MedicalHistory"] = txtMedHistory.Text;
+                table.Rows[i]["ID"] = txtID.Text;
+                table.Rows[i]["Name"] = txtName.Text;
+                table.Rows[i]["Phone"] = txtPhone.Text;
+                table.Rows[i]["DOB"] = dtpDOB.Value.ToShortDateString();
+                table.Rows[i]["Gender"] = gender;
+                table.Rows[i]["MedicalHistory"] = txtMedHistory.Text;
 
-                MessageBox.Show("Patient Updated!");
+                dgvPatients.Refresh();
+
+                MessageBox.Show("Updated!");
+            }
+            else
+            {
+                MessageBox.Show("Select a row first!");
             }
         }
 
         // =========================
-        // DELETE BUTTON
+        // DELETE
         // =========================
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvPatients.SelectedRows.Count > 0)
+            if (dgvPatients.CurrentRow != null)
             {
-                dgvPatients.Rows.RemoveAt(dgvPatients.SelectedRows[0].Index);
-                MessageBox.Show("Patient Deleted!");
+                dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
+                MessageBox.Show("Deleted!");
+            }
+            else
+            {
+                MessageBox.Show("Select a row first!");
             }
         }
 
         // =========================
-        // CLEAR BUTTON
+        // CLEAR
         // =========================
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -101,33 +155,36 @@ namespace Hospital_Management_System.Forms
 
         private void ClearFields()
         {
-            txtID.Clear();
-            txtName.Clear();
-            txtPhone.Clear();
-            txtMedHistory.Clear();
+            txtID.Text = "";
+            txtName.Text = "";
+            txtPhone.Text = "";
+            txtMedHistory.Text = "";
             rbMale.Checked = false;
             rbFemale.Checked = false;
             dtpDOB.Value = DateTime.Now;
         }
 
         // =========================
-        // CLICK ROW -> SHOW DATA
+        // CLICK ROW
         // =========================
         private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvPatients.Rows[e.RowIndex];
+                var row = dgvPatients.Rows[e.RowIndex];
 
-                txtID.Text = row.Cells["ID"].Value.ToString();
-                txtName.Text = row.Cells["Name"].Value.ToString();
-                txtPhone.Text = row.Cells["Phone"].Value.ToString();
-                dtpDOB.Value = Convert.ToDateTime(row.Cells["DOB"].Value);
-                txtMedHistory.Text = row.Cells["MedicalHistory"].Value.ToString();
+                txtID.Text = row.Cells["ID"].Value?.ToString();
+                txtName.Text = row.Cells["Name"].Value?.ToString();
+                txtPhone.Text = row.Cells["Phone"].Value?.ToString();
+                txtMedHistory.Text = row.Cells["MedicalHistory"].Value?.ToString();
 
-                string gender = row.Cells["Gender"].Value.ToString();
-                rbMale.Checked = (gender == "Male");
-                rbFemale.Checked = (gender == "Female");
+                DateTime dob;
+                if (DateTime.TryParse(row.Cells["DOB"].Value?.ToString(), out dob))
+                    dtpDOB.Value = dob;
+
+                string gender = row.Cells["Gender"].Value?.ToString();
+                rbMale.Checked = gender == "Male";
+                rbFemale.Checked = gender == "Female";
             }
         }
 
@@ -136,11 +193,13 @@ namespace Hospital_Management_System.Forms
         // =========================
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string search = txtSearch.Text.ToLower();
+            string search = txtSearch.Text.Replace("'", "''");
 
-            DataView dv = table.DefaultView;
-            dv.RowFilter = $"Name LIKE '%{search}%' OR Phone LIKE '%{search}%'";
-            dgvPatients.DataSource = dv;
+            if (string.IsNullOrEmpty(search))
+                table.DefaultView.RowFilter = "";
+            else
+                table.DefaultView.RowFilter =
+                    $"Name LIKE '%{search}%' OR Phone LIKE '%{search}%'";
         }
     }
 }

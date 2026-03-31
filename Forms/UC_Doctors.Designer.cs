@@ -21,6 +21,7 @@ namespace Hospital_Management_System.Forms
             this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlCard = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.picDoctor = new System.Windows.Forms.PictureBox();
             this.btnUpload = new Guna.UI2.WinForms.Guna2Button();
             this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
@@ -40,7 +41,6 @@ namespace Hospital_Management_System.Forms
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvDoctors = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDoctor)).BeginInit();
@@ -102,6 +102,18 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.ShadowDecoration.Enabled = true;
             this.pnlCard.Size = new System.Drawing.Size(920, 310);
             this.pnlCard.TabIndex = 1;
+            // 
+            // btnClear
+            // 
+            this.btnClear.BorderRadius = 10;
+            this.btnClear.FillColor = System.Drawing.Color.DarkGray;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(772, 243);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(110, 45);
+            this.btnClear.TabIndex = 17;
+            this.btnClear.Text = "Clear";
             // 
             // picDoctor
             // 
@@ -278,9 +290,9 @@ namespace Hospital_Management_System.Forms
             this.rbFemale.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
             this.rbFemale.CheckedState.BorderThickness = 0;
             this.rbFemale.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
-            this.rbFemale.Location = new System.Drawing.Point(760, 135);
+            this.rbFemale.Location = new System.Drawing.Point(800, 135);
             this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(104, 24);
+            this.rbFemale.Size = new System.Drawing.Size(90, 24);
             this.rbFemale.TabIndex = 11;
             this.rbFemale.Text = "Female";
             this.rbFemale.UncheckedState.BorderThickness = 0;
@@ -429,18 +441,6 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.RowsStyle.Height = 35;
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // btnClear
-            // 
-            this.btnClear.BorderRadius = 10;
-            this.btnClear.FillColor = System.Drawing.Color.DarkGray;
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(772, 243);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(110, 45);
-            this.btnClear.TabIndex = 17;
-            this.btnClear.Text = "Clear";
             // 
             // UC_Doctors
             // 
