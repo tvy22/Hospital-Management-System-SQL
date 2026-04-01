@@ -28,11 +28,8 @@ namespace Hospital_Management_System.Forms
                 return;
             }
 
-<<<<<<< HEAD
             if (user == "admin" && pass == "123")
-=======
             if(user == "admin" && pass == "123")
->>>>>>> 47ee31b4a9dd0081bc60e20e0c10b5d78def2677
             {
                 this.Hide();
                 MainDashboard main = new MainDashboard();
@@ -47,11 +44,8 @@ namespace Hospital_Management_System.Forms
 
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
         {
-<<<<<<< HEAD
             if (e.KeyCode == Keys.Escape)
-=======
             if(e.KeyCode == Keys.Escape)
->>>>>>> 47ee31b4a9dd0081bc60e20e0c10b5d78def2677
             {
                 Application.Exit();
             }

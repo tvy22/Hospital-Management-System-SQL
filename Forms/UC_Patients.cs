@@ -1,340 +1,286 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< HEAD
-using TheArtOfDevHtmlRenderer.Adapters;
-
-=======
-using Guna.UI2.WinForms; // ត្រូវប្រាកដថាមាន Library នេះ
->>>>>>> ae9204eff5f1cb4d2a2a45a51e898cb6f5993fc9
-
-
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Hospital_Management_System.Models;
 
 namespace Hospital_Management_System.Forms
 {
     public partial class UC_Patients : UserControl
     {
-        private DataTable table;
+        string fileName = "patients.dat";
+        List<Patient> patients = new List<Patient>();
+        BinaryFormatter bf = new BinaryFormatter();
 
         public UC_Patients()
         {
             InitializeComponent();
-<<<<<<< HEAD
-
-            SetupGrid();       // 🔥 FIX GRID
-            InitializeTable(); // 🔥 CREATE TABLE
-            ConnectEvents();   // 🔥 EVENTS
-=======
-<<<<<<< HEAD
-
-            // ១. រៀបចំតារាងនៅពេល Load
-            SetupDataGrid();
-
-            // ២. ចង Event ជាមួយ Button (ឈ្មោះត្រូវតាម Designer របស់អ្នក)
-            btnSave.Click += BtnSave_Click;
-            btnUpdate.Click += BtnUpdate_Click;
-            btnDelete.Click += BtnDelete_Click;
-            btnClear.Click += BtnClear_Click;
-
-            // ៣. Event សម្រាប់ការស្វែងរក និងការចុចលើតារាង
-            txtSearch.TextChanged += TxtSearch_TextChanged;
-            dgvPatients.CellClick += DgvPatients_CellClick;
+            txtID.Enabled = false;
+            LoadPatients();
+            ShowPatients();
+            GenerateNextID();
         }
 
-        private void SetupDataGrid()
+        //Function to clear form
+        private void ClearForm()
         {
-            if (dgvPatients.Columns.Count > 0) return;
-
-            // បង្កើត Column សម្រាប់ Guna2DataGridView
-            dgvPatients.Columns.Add("PatientID", "Patient ID");
-            dgvPatients.Columns.Add("FullName", "Full Name");
-            dgvPatients.Columns.Add("Phone", "Phone");
-            dgvPatients.Columns.Add("DOB", "Date of Birth");
-            dgvPatients.Columns.Add("Gender", "Gender");
-            dgvPatients.Columns.Add("MedHistory", "Medical History");
-
-            dgvPatients.AllowUserToAddRows = false;
-        }
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-            // ប្រើ .Text សម្រាប់ Guna2TextBox
-            if (string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtName.Text))
-            {
-                MessageBox.Show("សូមបំពេញព័ត៌មានចាំបាច់!");
-                return;
-            }
-
-            string gender = rbMale.Checked ? "Male" : (rbFemale.Checked ? "Female" : "Other");
-
-            dgvPatients.Rows.Add(
-=======
-            InitializeTable();
->>>>>>> ae9204eff5f1cb4d2a2a45a51e898cb6f5993fc9
-        }
-
-        // =========================
-        // FIX GRID (IMPORTANT)
-        // =========================
-        private void SetupGrid()
-        {
-            dgvPatients.DataSource = null;
-            dgvPatients.Columns.Clear(); // remove designer columns
-
-            dgvPatients.AutoGenerateColumns = true;
-            dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPatients.MultiSelect = false;
-        }
-
-        // =========================
-        // CREATE TABLE (MATCH DOCTOR STYLE)
-        // =========================
-        private void InitializeTable()
-        {
-            table = new DataTable();
-
-            table.Columns.Add("ID");
-            table.Columns.Add("Name");
-            table.Columns.Add("Phone");
-            table.Columns.Add("DOB");
-            table.Columns.Add("Gender");
-            table.Columns.Add("MedicalHistory");
-
-            dgvPatients.DataSource = table;
-        }
-
-        // =========================
-        // CONNECT EVENTS
-        // =========================
-        private void ConnectEvents()
-        {
-            btnSave.Click += btnSave_Click;
-            btnUpdate.Click += btnUpdate_Click;
-            btnDelete.Click += btnDelete_Click;
-            btnClear.Click += btnClear_Click;
-            dgvPatients.CellClick += dgvPatients_CellClick;
-            txtSearch.TextChanged += txtSearch_TextChanged;
-        }
-
-        // =========================
-        // SAVE
-        // =========================
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtID.Text) ||
-                string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Please fill ID and Name!");
-                return;
-            }
-
-            string gender = rbMale.Checked ? "Male" :
-                            rbFemale.Checked ? "Female" : "";
-
-            table.Rows.Add(
->>>>>>> fbc22db7b9d27036daaa2a3b2e2d7ced7826333e
-                txtID.Text,
-                txtName.Text,
-                txtPhone.Text,
-                dtpDOB.Value.ToShortDateString(),
-                gender,
-<<<<<<< HEAD
-                txtMedHistory.Text // ក្នុង Designer របស់អ្នកវាជា Guna2TextBox (Multiline)
-            );
-
-            ClearFields();
-        }
-
-        private void BtnUpdate_Click(object sender, EventArgs e)
-        {
-            if (dgvPatients.CurrentRow != null)
-            {
-                var row = dgvPatients.CurrentRow;
-                row.Cells[0].Value = txtID.Text;
-                row.Cells[1].Value = txtName.Text;
-                row.Cells[2].Value = txtPhone.Text;
-                row.Cells[3].Value = dtpDOB.Value.ToShortDateString();
-                row.Cells[4].Value = rbMale.Checked ? "Male" : "Female";
-                row.Cells[5].Value = txtMedHistory.Text;
-
-                MessageBox.Show("បានធ្វើបច្ចុប្បន្នភាព!");
-            }
-        }
-
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvPatients.CurrentRow != null)
-            {
-                dgvPatients.Rows.Remove(dgvPatients.CurrentRow);
-            }
-        }
-
-        private void BtnClear_Click(object sender, EventArgs e)
-=======
-                txtMedHistory.Text
-            );
-
-            dgvPatients.Refresh(); // 🔥 FORCE SHOW
-
-            MessageBox.Show("Saved!");
-            ClearFields();
-        }
-
-        // =========================
-        // UPDATE
-        // =========================
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (dgvPatients.CurrentRow != null)
-            {
-                int i = dgvPatients.CurrentRow.Index;
-
-                string gender = rbMale.Checked ? "Male" :
-                                rbFemale.Checked ? "Female" : "";
-
-                table.Rows[i]["ID"] = txtID.Text;
-                table.Rows[i]["Name"] = txtName.Text;
-                table.Rows[i]["Phone"] = txtPhone.Text;
-                table.Rows[i]["DOB"] = dtpDOB.Value.ToShortDateString();
-                table.Rows[i]["Gender"] = gender;
-                table.Rows[i]["MedicalHistory"] = txtMedHistory.Text;
-
-                dgvPatients.Refresh();
-
-                MessageBox.Show("Updated!");
-            }
-            else
-            {
-                MessageBox.Show("Select a row first!");
-            }
-        }
-
-        // =========================
-        // DELETE
-        // =========================
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvPatients.CurrentRow != null)
-            {
-                dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
-                MessageBox.Show("Deleted!");
-            }
-            else
-            {
-                MessageBox.Show("Select a row first!");
-            }
-        }
-
-        // =========================
-        // CLEAR
-        // =========================
-        private void btnClear_Click(object sender, EventArgs e)
->>>>>>> fbc22db7b9d27036daaa2a3b2e2d7ced7826333e
-        {
-            ClearFields();
-        }
-
-        private void ClearFields()
-        {
-<<<<<<< HEAD
-            txtID.Text = "";
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtMedHistory.Text = "";
-=======
-            txtID.Clear();
+            errorProvider1.Clear();
             txtName.Clear();
             txtPhone.Clear();
             txtMedHistory.Clear();
-<<<<<<< HEAD
+            rbMale.Checked = true;
             dtpDOB.Value = DateTime.Now;
-            rbMale.Checked = false;
-            rbFemale.Checked = false;
-            txtSearch.Clear();
+            GenerateNextID();
         }
 
-        private void DgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
+        //Function to save date to file
+        private void SaveAllToFile()
         {
-            if (e.RowIndex >= 0)
+            using (FileStream fs = new FileStream(fileName, FileMode.Create))
             {
-                var row = dgvPatients.Rows[e.RowIndex];
-                txtID.Text = row.Cells[0].Value?.ToString();
-                txtName.Text = row.Cells[1].Value?.ToString();
-                txtPhone.Text = row.Cells[2].Value?.ToString();
-
-                if (DateTime.TryParse(row.Cells[3].Value?.ToString(), out DateTime dob))
-                    dtpDOB.Value = dob;
-                string gender = row.Cells[4].Value?.ToString();
-                rbMale.Checked = (gender == "Male");
-                rbFemale.Checked = (gender == "Female");
-
-                txtMedHistory.Text = row.Cells[5].Value?.ToString();
-            }
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string keyword = txtSearch.Text.ToLower();
-            foreach (DataGridViewRow row in dgvPatients.Rows)
-            {
-                if (row.Cells[1].Value != null)
+                foreach (Patient p in patients)
                 {
-                    row.Visible = row.Cells[1].Value.ToString().ToLower().Contains(keyword) ||
-                                  row.Cells[0].Value.ToString().ToLower().Contains(keyword);
+                    bf.Serialize(fs, p);
                 }
             }
-=======
->>>>>>> ae9204eff5f1cb4d2a2a45a51e898cb6f5993fc9
-            rbMale.Checked = false;
-            rbFemale.Checked = false;
-            dtpDOB.Value = DateTime.Now;
         }
 
-        // =========================
-        // CLICK ROW
-        // =========================
-        private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
+        //Function to load all patients
+        private void LoadPatients()
         {
-            if (e.RowIndex >= 0)
+            if (File.Exists(fileName))
             {
-                var row = dgvPatients.Rows[e.RowIndex];
-
-                txtID.Text = row.Cells["ID"].Value?.ToString();
-                txtName.Text = row.Cells["Name"].Value?.ToString();
-                txtPhone.Text = row.Cells["Phone"].Value?.ToString();
-                txtMedHistory.Text = row.Cells["MedicalHistory"].Value?.ToString();
-
-                DateTime dob;
-                if (DateTime.TryParse(row.Cells["DOB"].Value?.ToString(), out dob))
-                    dtpDOB.Value = dob;
-
-                string gender = row.Cells["Gender"].Value?.ToString();
-                rbMale.Checked = gender == "Male";
-                rbFemale.Checked = gender == "Female";
+                FileStream fs = new FileStream(fileName, FileMode.Open);
+                while (fs.Position != fs.Length)
+                {
+                    Patient p = (Patient)bf.Deserialize(fs);
+                    patients.Add(p);
+                }
+                fs.Close();
             }
         }
 
-        // =========================
-        // SEARCH
-        // =========================
+        //Function to show patients in data grid view
+        private void ShowPatients()
+        {
+            dgvPatients.DataSource = null;
+            dgvPatients.DataSource = patients;
+            FormatGrid();
+        }
+
+        //Function to rename the data grid header
+        private void FormatGrid()
+        {
+            if (dgvPatients.Columns.Count > 0)
+            {
+                dgvPatients.Columns["PatientID"].HeaderText = "ID";
+                dgvPatients.Columns["FullName"].HeaderText = "Name";
+                dgvPatients.Columns["MedicalHistory"].HeaderText = "Medical History";
+                dgvPatients.Columns["DateOfBirth"].HeaderText = "Birthdate";
+            }
+        }
+
+        //Function to auto-generate patient id
+        private void GenerateNextID()
+        {
+            int maxId = 0;
+
+            if (patients.Count > 0)
+            {
+                foreach (var p in patients)
+                {
+                    if (!string.IsNullOrEmpty(p.PatientID) && p.PatientID.StartsWith("PAT-") && p.PatientID.Length > 4)
+                    {
+                        if (int.TryParse(p.PatientID.Substring(4), out int idValue))
+                        {
+                            if (idValue > maxId) maxId = idValue;
+                        }
+                    }
+                }
+            }
+
+            int nextId = maxId + 1;
+            txtID.Text = "PAT-" + nextId.ToString("000");
+        }
+
+        //Function to validate the data fields in form
+        private bool IsValid()
+        {
+            errorProvider1.Clear();
+            bool isAllValid = true;
+
+            //Check if name is empty
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                errorProvider1.SetError(txtName, "Patient name is required.");
+                isAllValid = false;
+            }
+
+            //Check phone
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                errorProvider1.SetError(txtPhone, "Phone is required.");
+                isAllValid = false;
+            }
+
+            return isAllValid;
+        }
+
+        //Function to save new patient object
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!IsValid()) return;
+
+            //Check if the id already exists before saving
+            bool alreadyExists = patients.Any(p => p.PatientID == txtID.Text);
+
+            if (alreadyExists)
+            {
+                MessageBox.Show("This patient ID already exists." +
+                                "If you want to change their details,please use the Update button instead.",
+                                "Duplicate ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Create a new patient object
+            Patient newPat = new Patient();
+            newPat.PatientID = txtID.Text;
+            newPat.FullName = txtName.Text;
+            newPat.Phone = txtPhone.Text;
+            newPat.DateOfBirth = dtpDOB.Value;
+            newPat.MedicalHistory = txtMedHistory.Text;
+
+            if (rbFemale.Checked) newPat.Gender = "Female";
+            else if (rbMale.Checked) newPat.Gender = "Male";
+
+            patients.Add(newPat);
+            SaveAllToFile();
+            ShowPatients();
+            ClearForm();
+            MessageBox.Show("Patient saved successfully!");
+            GenerateNextID();
+        }
+
+        private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Check if a valid row was clicked
+            if (e.RowIndex >= 0 && dgvPatients.Rows[e.RowIndex].Cells["PatientID"].Value != null)
+            {
+                //Get the selected patient from the list
+                string id = dgvPatients.Rows[e.RowIndex].Cells["PatientID"].Value.ToString();
+                Patient selectedPat = patients.FirstOrDefault(p => p.PatientID == id);
+
+                //Fill the form with their data
+                txtID.Text = selectedPat.PatientID;
+                txtName.Text = selectedPat.FullName;
+                txtPhone.Text = selectedPat.Phone;
+                txtMedHistory.Text = selectedPat.MedicalHistory;
+                dtpDOB.Value = selectedPat.DateOfBirth;
+
+                if (selectedPat.Gender == "Female") rbFemale.Checked = true;
+                else rbMale.Checked = true;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //Find the patient in the list that matches the ID in the textbox
+            Patient patToUpdate = patients.FirstOrDefault(p => p.PatientID == txtID.Text);
+
+            if (patToUpdate != null)
+            {
+                if (!IsValid())
+                {
+                    return;
+                }
+                //Update the properties with data currently in the textboxes
+                patToUpdate.FullName = txtName.Text;
+                patToUpdate.Phone = txtPhone.Text;
+                patToUpdate.Gender = rbFemale.Checked ? "Female" : "Male";
+                patToUpdate.DateOfBirth = dtpDOB.Value;
+                patToUpdate.MedicalHistory = !string.IsNullOrWhiteSpace(txtMedHistory.Text) ? txtMedHistory.Text : "";
+
+                SaveAllToFile();
+
+                ShowPatients();
+                ClearForm();
+                GenerateNextID();
+                MessageBox.Show("Patient updated successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient from the list first.");
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Find the patient in the list using the id from the textbox
+            Patient patToDelete = patients.FirstOrDefault(p => p.PatientID == txtID.Text);
+
+            if (patToDelete != null)
+            {
+                //Ask for confirmation before deleting
+                DialogResult dialog = MessageBox.Show("Are you sure you want to delete this patient?",
+                    "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (dialog == DialogResult.Yes)
+                {
+                    //Remove the selected patient from the list
+                    patients.Remove(patToDelete);
+
+                    //Overwrite the file with the updated list
+                    SaveAllToFile();
+
+                    //Refresh ui and reset id
+                    ShowPatients();
+                    ClearForm();
+                    GenerateNextID();
+
+                    MessageBox.Show("Patient deleted successfully!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select or search a patient from the list to delete.");
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string search = txtSearch.Text.Replace("'", "''");
+            string keyword = txtSearch.Text.Trim().ToLower();
 
-<<<<<<< HEAD
-            if (string.IsNullOrEmpty(search))
-                table.DefaultView.RowFilter = "";
+            if (string.IsNullOrEmpty(keyword))
+            {
+                //if search is empty, show everyone
+                ShowPatients();
+            }
             else
-                table.DefaultView.RowFilter =
-                    $"Name LIKE '%{search}%' OR Phone LIKE '%{search}%'";
-=======
-            DataView dv = table.DefaultView;
-            dv.RowFilter = $"Name LIKE '%{search}%' OR Phone LIKE '%{search}%'";
-            dgvPatients.DataSource = dv;
->>>>>>> fbc22db7b9d27036daaa2a3b2e2d7ced7826333e
->>>>>>> ae9204eff5f1cb4d2a2a45a51e898cb6f5993fc9
+            {
+                //Filter the list
+                var results = patients.Where(p =>
+                    p.FullName.ToLower().Contains(keyword) ||
+                    p.PatientID.ToLower().Contains(keyword)
+                ).ToList();
+
+                //Show the result on the grid
+                dgvPatients.DataSource = null;
+                dgvPatients.DataSource = results;
+                FormatGrid();
+            }
         }
     }
 }
