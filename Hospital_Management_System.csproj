@@ -88,6 +88,7 @@
     <Compile Include="Forms\UC_Patients.Designer.cs">
       <DependentUpon>UC_Patients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\LoginForm.resx">
@@ -135,7 +136,6 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Logic\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hospital_hero.jpg.jpg" />
