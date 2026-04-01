@@ -28,7 +28,6 @@ namespace Hospital_Management_System.Forms
                 return;
             }
 
-            if (user == "admin" && pass == "123")
             if(user == "admin" && pass == "123")
             {
                 this.Hide();

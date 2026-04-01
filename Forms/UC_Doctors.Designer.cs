@@ -15,9 +15,10 @@ namespace Hospital_Management_System.Forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlCard = new Guna.UI2.WinForms.Guna2Panel();
@@ -35,16 +36,18 @@ namespace Hospital_Management_System.Forms
             this.rbMale = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rbFemale = new Guna.UI2.WinForms.Guna2RadioButton();
             this.cmbStatus = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.shift = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbShift = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvDoctors = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlMain.SuspendLayout();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -90,7 +93,7 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.Controls.Add(this.rbMale);
             this.pnlCard.Controls.Add(this.rbFemale);
             this.pnlCard.Controls.Add(this.cmbStatus);
-            this.pnlCard.Controls.Add(this.shift);
+            this.pnlCard.Controls.Add(this.cmbShift);
             this.pnlCard.Controls.Add(this.btnSave);
             this.pnlCard.Controls.Add(this.btnUpdate);
             this.pnlCard.Controls.Add(this.btnDelete);
@@ -114,6 +117,7 @@ namespace Hospital_Management_System.Forms
             this.btnClear.Size = new System.Drawing.Size(110, 45);
             this.btnClear.TabIndex = 17;
             this.btnClear.Text = "Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // picDoctor
             // 
@@ -135,7 +139,8 @@ namespace Hospital_Management_System.Forms
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(120, 30);
             this.btnUpload.TabIndex = 1;
-            this.btnUpload.Text = "Change Photo";
+            this.btnUpload.Text = "Upload Photo";
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // txtID
             // 
@@ -319,27 +324,27 @@ namespace Hospital_Management_System.Forms
             this.cmbStatus.StartIndex = 0;
             this.cmbStatus.TabIndex = 12;
             // 
-            // shift
+            // cmbShift
             // 
-            this.shift.BackColor = System.Drawing.Color.Transparent;
-            this.shift.BorderRadius = 8;
-            this.shift.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.shift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.shift.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.shift.FocusedColor = System.Drawing.Color.Empty;
-            this.shift.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.shift.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.shift.ItemHeight = 30;
-            this.shift.Items.AddRange(new object[] {
+            this.cmbShift.BackColor = System.Drawing.Color.Transparent;
+            this.cmbShift.BorderRadius = 8;
+            this.cmbShift.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbShift.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.cmbShift.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbShift.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbShift.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbShift.ItemHeight = 30;
+            this.cmbShift.Items.AddRange(new object[] {
             "Select Shift",
             "Morning",
             "Afternoon",
             "Night"});
-            this.shift.Location = new System.Drawing.Point(670, 80);
-            this.shift.Name = "shift";
-            this.shift.Size = new System.Drawing.Size(220, 36);
-            this.shift.StartIndex = 0;
-            this.shift.TabIndex = 13;
+            this.cmbShift.Location = new System.Drawing.Point(670, 80);
+            this.cmbShift.Name = "cmbShift";
+            this.cmbShift.Size = new System.Drawing.Size(220, 36);
+            this.cmbShift.StartIndex = 0;
+            this.cmbShift.TabIndex = 13;
             // 
             // btnSave
             // 
@@ -352,6 +357,7 @@ namespace Hospital_Management_System.Forms
             this.btnSave.Size = new System.Drawing.Size(110, 45);
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnUpdate
             // 
@@ -364,6 +370,7 @@ namespace Hospital_Management_System.Forms
             this.btnUpdate.Size = new System.Drawing.Size(110, 45);
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -376,6 +383,7 @@ namespace Hospital_Management_System.Forms
             this.btnDelete.Size = new System.Drawing.Size(110, 45);
             this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtSearch
             // 
@@ -390,31 +398,33 @@ namespace Hospital_Management_System.Forms
             this.txtSearch.SelectedText = "";
             this.txtSearch.Size = new System.Drawing.Size(350, 40);
             this.txtSearch.TabIndex = 2;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // dgvDoctors
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dgvDoctors.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDoctors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvDoctors.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDoctors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDoctors.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDoctors.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDoctors.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDoctors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.Location = new System.Drawing.Point(30, 465);
             this.dgvDoctors.Name = "dgvDoctors";
+            this.dgvDoctors.ReadOnly = true;
             this.dgvDoctors.RowHeadersVisible = false;
             this.dgvDoctors.RowHeadersWidth = 51;
             this.dgvDoctors.RowTemplate.Height = 35;
@@ -433,7 +443,7 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.DimGray;
             this.dgvDoctors.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDoctors.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvDoctors.ThemeStyle.ReadOnly = false;
+            this.dgvDoctors.ThemeStyle.ReadOnly = true;
             this.dgvDoctors.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDoctors.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDoctors.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -441,6 +451,12 @@ namespace Hospital_Management_System.Forms
             this.dgvDoctors.ThemeStyle.RowsStyle.Height = 35;
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvDoctors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDoctors_CellClick);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
             // UC_Doctors
             // 
@@ -453,6 +469,7 @@ namespace Hospital_Management_System.Forms
             this.pnlCard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,8 +482,9 @@ namespace Hospital_Management_System.Forms
         private Guna2TextBox txtID, txtName, txtPhone, txtEmail, txtRoom, txtSearch, txtFee; // Added txtFee
         private Guna2DateTimePicker dtpDOB;
         private Guna2RadioButton rbMale, rbFemale;
-        private Guna2ComboBox shift, cmbStatus, cmbSpeciality;
+        private Guna2ComboBox cmbShift, cmbStatus, cmbSpeciality;
         private Guna2DataGridView dgvDoctors;
         private Guna2Button btnClear;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
