@@ -19,11 +19,6 @@ namespace Hospital_Management_System.Forms
             SetupSampleData();
         }
 
-        #region //Theavy (Checkin)
-
-        #endregion
-
-        #region //Tevy (Checkout)
         private void SetupSampleData()
         {
             if (billingTable.Columns.Count == 0) 
@@ -149,7 +144,6 @@ namespace Hospital_Management_System.Forms
         private void txtReason_TextChanged(object sender, EventArgs e) { }
         private void lblFinalCost_Click(object sender, EventArgs e) { }
     }
-    #endregion
 
     // This class must be OUTSIDE the UC_CheckInOut class but INSIDE the namespace
     [Serializable]
