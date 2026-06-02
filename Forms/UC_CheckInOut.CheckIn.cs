@@ -68,7 +68,12 @@ namespace Hospital_Management_System.Forms
 
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvPatient.Rows[e.RowIndex];
+                txtPatientID.Text = row.Cells["PatientID"].Value.ToString();
+                txtPatientName.Text = row.Cells["FullName"].Value.ToString();
+            }
         }
     }
 }

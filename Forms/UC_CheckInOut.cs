@@ -18,6 +18,7 @@ namespace Hospital_Management_System.Forms
             InitializeComponent();
             SetupSampleData();
             LoadDataForCheckIn();
+            dgvPatient.CellClick += dgvPatient_CellClick;
         }
 
         private void SetupSampleData()
