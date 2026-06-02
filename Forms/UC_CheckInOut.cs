@@ -20,6 +20,7 @@ namespace Hospital_Management_System.Forms
             LoadDataForCheckIn();
             dgvPatient.CellClick += dgvPatient_CellClick;
             cmbSpeciality.SelectionChangeCommitted += cmbSpeciality_SelectionChangeCommitted;
+            cmbDoctor.SelectionChangeCommitted += cmbDoctor_SelectionChangeCommitted;
         }
 
         private void SetupSampleData()

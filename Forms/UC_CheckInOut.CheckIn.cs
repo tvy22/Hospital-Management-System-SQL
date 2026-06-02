@@ -73,6 +73,15 @@ namespace Hospital_Management_System.Forms
             ShowDoctorsInCheckIn();
         }
 
+        private void cmbDoctor_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Doctor selectedDoc = cmbDoctor.SelectedItem as Doctor;
+            if(selectedDoc != null && selectedDoc.DoctorID != "0")
+            {
+                cmbSpeciality.SelectedItem = selectedDoc.Speciality;
+            }
+        }
+
         private void ShowDoctorsInCheckIn()
         {
             string sp = cmbSpeciality.SelectedItem.ToString();
