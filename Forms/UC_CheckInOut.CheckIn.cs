@@ -66,6 +66,19 @@ namespace Hospital_Management_System.Forms
             }
         }
 
+        private void cmbSpeciality_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ShowDoctorsInCheckIn();
+        }
+
+        private void ShowDoctorsInCheckIn()
+        {
+            string sp = cmbSpeciality.SelectedItem.ToString();
+            var filteredDoctors = allDoctors.Where(d => d.Speciality == sp).ToList();
+            cmbDoctor.DataSource = filteredDoctors;
+            cmbDoctor.SelectedIndex = -1;
+        }
+
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
