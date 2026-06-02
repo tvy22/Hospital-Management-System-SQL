@@ -18,6 +18,8 @@ namespace Hospital_Management_System.Forms
 
         private void LoadDataForCheckIn()
         {
+            GenerateAppID();
+
             // Load Patients
             if (File.Exists("patients.dat"))
             {
@@ -114,9 +116,57 @@ namespace Hospital_Management_System.Forms
             }
         }
 
-        private void ApppointmentID()
+        private void GenerateAppID()
         {
-            //string fileCheckin = "checkin.dat";
+            int maxId = 0;
+
+            if (allCheckins.Count > 0)
+            {
+                foreach (var c in allCheckins)
+                {
+                    // Check if ID is not null, starts with APP-, and is long enough
+                    if (!string.IsNullOrEmpty(c.AppID) && c.AppID.StartsWith("APP-") && c.AppID.Length > 4)
+                    {
+                        // Try to parse the number part safely
+                        if (int.TryParse(c.AppID.Substring(4), out int idValue))
+                        {
+                            if (idValue > maxId) maxId = idValue;
+                        }
+                    }
+                }
+            }
+
+            int nextId = maxId + 1;
+            txtAppID.Text = "APP-" + nextId.ToString("000");
+        }
+
+        private bool IsValid()
+        {
+            errorProvider1.Clear();
+            bool isAllValid = true;
+
+            //Check if id is empty
+            if (string.IsNullOrWhiteSpace(txtAppID.Text))
+            {
+                errorProvider1.SetError(txtAppID, "ID is required.");
+                isAllValid = false;
+            }
+
+            //Check patient id and name
+            if (string.IsNullOrWhiteSpace(txtPatientID.Text) || string.IsNullOrWhiteSpace(txtPatientName.Text))
+            {
+                errorProvider1.SetError(txtPatientID, "Select a patient from the table.");
+                isAllValid = false;
+            }
+
+            //Check doctor name and speciality
+            if (cmbDoctor.SelectedIndex <= 0 || cmbSpeciality.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(cmbDoctor, "Select a doctor.");
+                isAllValid = false;
+            }
+
+            return isAllValid;
         }
 
         private void SaveAllToFile()
@@ -132,6 +182,8 @@ namespace Hospital_Management_System.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if (!IsValid()) return;
+
             //Create new appointment object
             Checkin newApp = new Checkin();
             newApp.AppID = txtAppID.Text;
@@ -145,6 +197,7 @@ namespace Hospital_Management_System.Forms
 
             allCheckins.Add(newApp);
             SaveAllToFile();
+            MessageBox.Show("Appointment Saved Successfully!");
         }
     }
 }
