@@ -79,6 +79,7 @@ namespace Hospital_Management_System.Forms
             if(selectedDoc != null && selectedDoc.DoctorID != "0")
             {
                 cmbSpeciality.SelectedItem = selectedDoc.Speciality;
+                txtRoom.Text = selectedDoc.RoomNumber;
             }
         }
 
