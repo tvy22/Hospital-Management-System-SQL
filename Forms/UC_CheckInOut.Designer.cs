@@ -17,35 +17,38 @@ namespace Hospital_Management_System.Forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new Guna.UI2.WinForms.Guna2TabControl();
             this.tabCheckIn = new System.Windows.Forms.TabPage();
             this.txtSearchPatient = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dgvPatientSearch = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dgvPatient = new Guna.UI2.WinForms.Guna2DataGridView();
             this.pnlCheckInForm = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblAppID = new System.Windows.Forms.Label();
             this.txtAppID = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblPatID = new System.Windows.Forms.Label();
-            this.txtPatientID_CI = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPatientID = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblPatName = new System.Windows.Forms.Label();
-            this.txtPatientName_CI = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPatientName = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblSpeciality = new System.Windows.Forms.Label();
             this.cmbSpeciality = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblDocName = new System.Windows.Forms.Label();
             this.cmbDoctor = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblTime = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             this.dtpAppTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lblRoom = new System.Windows.Forms.Label();
-            this.txtRoom_CI = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtRoom = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblReason = new System.Windows.Forms.Label();
-            this.txtReason_CI = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnRegisterAppointment = new Guna.UI2.WinForms.Guna2Button();
+            this.Reason = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnRegister = new Guna.UI2.WinForms.Guna2Button();
             this.tabCheckOut = new System.Windows.Forms.TabPage();
+            this.btnHistory = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearchActive = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvActiveVisits = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnRefresh = new Guna.UI2.WinForms.Guna2Button();
@@ -63,14 +66,15 @@ namespace Hospital_Management_System.Forms
             this.lblTotalLabel = new System.Windows.Forms.Label();
             this.lblFinalCost = new System.Windows.Forms.Label();
             this.btnCompleteVisit = new Guna.UI2.WinForms.Guna2Button();
-            this.btnHistory = new Guna.UI2.WinForms.Guna2Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl.SuspendLayout();
             this.tabCheckIn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatientSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
             this.pnlCheckInForm.SuspendLayout();
             this.tabCheckOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActiveVisits)).BeginInit();
             this.pnlBillingSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -107,7 +111,7 @@ namespace Hospital_Management_System.Forms
             // 
             this.tabCheckIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             this.tabCheckIn.Controls.Add(this.txtSearchPatient);
-            this.tabCheckIn.Controls.Add(this.dgvPatientSearch);
+            this.tabCheckIn.Controls.Add(this.dgvPatient);
             this.tabCheckIn.Controls.Add(this.pnlCheckInForm);
             this.tabCheckIn.Location = new System.Drawing.Point(4, 54);
             this.tabCheckIn.Name = "tabCheckIn";
@@ -129,77 +133,79 @@ namespace Hospital_Management_System.Forms
             this.txtSearchPatient.Size = new System.Drawing.Size(340, 40);
             this.txtSearchPatient.TabIndex = 0;
             // 
-            // dgvPatientSearch
+            // dgvPatient
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvPatientSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPatientSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPatientSearch.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPatientSearch.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvPatientSearch.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPatientSearch.Location = new System.Drawing.Point(20, 75);
-            this.dgvPatientSearch.Name = "dgvPatientSearch";
-            this.dgvPatientSearch.RowHeadersVisible = false;
-            this.dgvPatientSearch.RowHeadersWidth = 51;
-            this.dgvPatientSearch.Size = new System.Drawing.Size(340, 545);
-            this.dgvPatientSearch.TabIndex = 1;
-            this.dgvPatientSearch.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPatientSearch.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvPatientSearch.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvPatientSearch.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvPatientSearch.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvPatientSearch.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPatientSearch.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPatientSearch.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvPatientSearch.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvPatientSearch.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dgvPatientSearch.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvPatientSearch.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvPatientSearch.ThemeStyle.HeaderStyle.Height = 29;
-            this.dgvPatientSearch.ThemeStyle.ReadOnly = false;
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.Height = 22;
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPatientSearch.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
+            this.dgvPatient.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            this.dgvPatient.ColumnHeadersHeight = 29;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPatient.DefaultCellStyle = dataGridViewCellStyle33;
+            this.dgvPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPatient.Location = new System.Drawing.Point(20, 75);
+            this.dgvPatient.Name = "dgvPatient";
+            this.dgvPatient.ReadOnly = true;
+            this.dgvPatient.RowHeadersVisible = false;
+            this.dgvPatient.RowHeadersWidth = 51;
+            this.dgvPatient.Size = new System.Drawing.Size(340, 545);
+            this.dgvPatient.TabIndex = 1;
+            this.dgvPatient.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPatient.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvPatient.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvPatient.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvPatient.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvPatient.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPatient.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPatient.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvPatient.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvPatient.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dgvPatient.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvPatient.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvPatient.ThemeStyle.HeaderStyle.Height = 29;
+            this.dgvPatient.ThemeStyle.ReadOnly = true;
+            this.dgvPatient.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPatient.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvPatient.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dgvPatient.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvPatient.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvPatient.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPatient.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // pnlCheckInForm
             // 
             this.pnlCheckInForm.BackColor = System.Drawing.Color.Transparent;
             this.pnlCheckInForm.BorderRadius = 20;
+            this.pnlCheckInForm.Controls.Add(this.label2);
             this.pnlCheckInForm.Controls.Add(this.lblAppID);
             this.pnlCheckInForm.Controls.Add(this.txtAppID);
             this.pnlCheckInForm.Controls.Add(this.lblPatID);
-            this.pnlCheckInForm.Controls.Add(this.txtPatientID_CI);
+            this.pnlCheckInForm.Controls.Add(this.txtPatientID);
             this.pnlCheckInForm.Controls.Add(this.lblPatName);
-            this.pnlCheckInForm.Controls.Add(this.txtPatientName_CI);
+            this.pnlCheckInForm.Controls.Add(this.txtPatientName);
             this.pnlCheckInForm.Controls.Add(this.lblSpeciality);
             this.pnlCheckInForm.Controls.Add(this.cmbSpeciality);
             this.pnlCheckInForm.Controls.Add(this.lblDocName);
             this.pnlCheckInForm.Controls.Add(this.cmbDoctor);
-            this.pnlCheckInForm.Controls.Add(this.lblTime);
+            this.pnlCheckInForm.Controls.Add(this.lblDate);
             this.pnlCheckInForm.Controls.Add(this.dtpAppTime);
             this.pnlCheckInForm.Controls.Add(this.lblRoom);
-            this.pnlCheckInForm.Controls.Add(this.txtRoom_CI);
+            this.pnlCheckInForm.Controls.Add(this.txtRoom);
             this.pnlCheckInForm.Controls.Add(this.lblReason);
-            this.pnlCheckInForm.Controls.Add(this.txtReason_CI);
-            this.pnlCheckInForm.Controls.Add(this.btnRegisterAppointment);
+            this.pnlCheckInForm.Controls.Add(this.Reason);
+            this.pnlCheckInForm.Controls.Add(this.btnRegister);
             this.pnlCheckInForm.FillColor = System.Drawing.Color.White;
             this.pnlCheckInForm.Location = new System.Drawing.Point(380, 20);
             this.pnlCheckInForm.Name = "pnlCheckInForm";
@@ -209,11 +215,21 @@ namespace Hospital_Management_System.Forms
             this.pnlCheckInForm.Size = new System.Drawing.Size(570, 600);
             this.pnlCheckInForm.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(174, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(239, 32);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Appointment Details";
+            // 
             // lblAppID
             // 
             this.lblAppID.AutoSize = true;
             this.lblAppID.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblAppID.Location = new System.Drawing.Point(30, 23);
+            this.lblAppID.Location = new System.Drawing.Point(42, 95);
             this.lblAppID.Name = "lblAppID";
             this.lblAppID.Size = new System.Drawing.Size(64, 20);
             this.lblAppID.TabIndex = 0;
@@ -225,7 +241,7 @@ namespace Hospital_Management_System.Forms
             this.txtAppID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAppID.DefaultText = "";
             this.txtAppID.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtAppID.Location = new System.Drawing.Point(180, 15);
+            this.txtAppID.Location = new System.Drawing.Point(174, 87);
             this.txtAppID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAppID.Name = "txtAppID";
             this.txtAppID.PlaceholderText = "";
@@ -238,57 +254,57 @@ namespace Hospital_Management_System.Forms
             // 
             this.lblPatID.AutoSize = true;
             this.lblPatID.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblPatID.Location = new System.Drawing.Point(30, 68);
+            this.lblPatID.Location = new System.Drawing.Point(42, 140);
             this.lblPatID.Name = "lblPatID";
             this.lblPatID.Size = new System.Drawing.Size(80, 20);
             this.lblPatID.TabIndex = 2;
             this.lblPatID.Text = "Patient ID:";
             // 
-            // txtPatientID_CI
+            // txtPatientID
             // 
-            this.txtPatientID_CI.BorderRadius = 8;
-            this.txtPatientID_CI.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPatientID_CI.DefaultText = "";
-            this.txtPatientID_CI.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPatientID_CI.Location = new System.Drawing.Point(180, 60);
-            this.txtPatientID_CI.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPatientID_CI.Name = "txtPatientID_CI";
-            this.txtPatientID_CI.PlaceholderText = "";
-            this.txtPatientID_CI.ReadOnly = true;
-            this.txtPatientID_CI.SelectedText = "";
-            this.txtPatientID_CI.Size = new System.Drawing.Size(350, 36);
-            this.txtPatientID_CI.TabIndex = 3;
+            this.txtPatientID.BorderRadius = 8;
+            this.txtPatientID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPatientID.DefaultText = "";
+            this.txtPatientID.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPatientID.Location = new System.Drawing.Point(174, 132);
+            this.txtPatientID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPatientID.Name = "txtPatientID";
+            this.txtPatientID.PlaceholderText = "";
+            this.txtPatientID.ReadOnly = true;
+            this.txtPatientID.SelectedText = "";
+            this.txtPatientID.Size = new System.Drawing.Size(350, 36);
+            this.txtPatientID.TabIndex = 3;
             // 
             // lblPatName
             // 
             this.lblPatName.AutoSize = true;
             this.lblPatName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblPatName.Location = new System.Drawing.Point(30, 113);
+            this.lblPatName.Location = new System.Drawing.Point(42, 185);
             this.lblPatName.Name = "lblPatName";
             this.lblPatName.Size = new System.Drawing.Size(54, 20);
             this.lblPatName.TabIndex = 4;
             this.lblPatName.Text = "Name:";
             // 
-            // txtPatientName_CI
+            // txtPatientName
             // 
-            this.txtPatientName_CI.BorderRadius = 8;
-            this.txtPatientName_CI.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPatientName_CI.DefaultText = "";
-            this.txtPatientName_CI.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPatientName_CI.Location = new System.Drawing.Point(180, 105);
-            this.txtPatientName_CI.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPatientName_CI.Name = "txtPatientName_CI";
-            this.txtPatientName_CI.PlaceholderText = "";
-            this.txtPatientName_CI.ReadOnly = true;
-            this.txtPatientName_CI.SelectedText = "";
-            this.txtPatientName_CI.Size = new System.Drawing.Size(350, 36);
-            this.txtPatientName_CI.TabIndex = 5;
+            this.txtPatientName.BorderRadius = 8;
+            this.txtPatientName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPatientName.DefaultText = "";
+            this.txtPatientName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPatientName.Location = new System.Drawing.Point(174, 177);
+            this.txtPatientName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPatientName.Name = "txtPatientName";
+            this.txtPatientName.PlaceholderText = "";
+            this.txtPatientName.ReadOnly = true;
+            this.txtPatientName.SelectedText = "";
+            this.txtPatientName.Size = new System.Drawing.Size(350, 36);
+            this.txtPatientName.TabIndex = 5;
             // 
             // lblSpeciality
             // 
             this.lblSpeciality.AutoSize = true;
             this.lblSpeciality.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblSpeciality.Location = new System.Drawing.Point(30, 158);
+            this.lblSpeciality.Location = new System.Drawing.Point(42, 230);
             this.lblSpeciality.Name = "lblSpeciality";
             this.lblSpeciality.Size = new System.Drawing.Size(78, 20);
             this.lblSpeciality.TabIndex = 6;
@@ -305,7 +321,9 @@ namespace Hospital_Management_System.Forms
             this.cmbSpeciality.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbSpeciality.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbSpeciality.ItemHeight = 30;
-            this.cmbSpeciality.Location = new System.Drawing.Point(180, 150);
+            this.cmbSpeciality.Items.AddRange(new object[] {
+            "Select speciality"});
+            this.cmbSpeciality.Location = new System.Drawing.Point(174, 222);
             this.cmbSpeciality.Name = "cmbSpeciality";
             this.cmbSpeciality.Size = new System.Drawing.Size(350, 36);
             this.cmbSpeciality.TabIndex = 7;
@@ -314,7 +332,7 @@ namespace Hospital_Management_System.Forms
             // 
             this.lblDocName.AutoSize = true;
             this.lblDocName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblDocName.Location = new System.Drawing.Point(30, 203);
+            this.lblDocName.Location = new System.Drawing.Point(42, 275);
             this.lblDocName.Name = "lblDocName";
             this.lblDocName.Size = new System.Drawing.Size(61, 20);
             this.lblDocName.TabIndex = 8;
@@ -331,20 +349,20 @@ namespace Hospital_Management_System.Forms
             this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbDoctor.ItemHeight = 30;
-            this.cmbDoctor.Location = new System.Drawing.Point(180, 195);
+            this.cmbDoctor.Location = new System.Drawing.Point(174, 267);
             this.cmbDoctor.Name = "cmbDoctor";
             this.cmbDoctor.Size = new System.Drawing.Size(350, 36);
             this.cmbDoctor.TabIndex = 9;
             // 
-            // lblTime
+            // lblDate
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblTime.Location = new System.Drawing.Point(30, 248);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(46, 20);
-            this.lblTime.TabIndex = 10;
-            this.lblTime.Text = "Time:";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.lblDate.Location = new System.Drawing.Point(42, 320);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(45, 20);
+            this.lblDate.TabIndex = 10;
+            this.lblDate.Text = "Date:";
             // 
             // dtpAppTime
             // 
@@ -353,7 +371,7 @@ namespace Hospital_Management_System.Forms
             this.dtpAppTime.FillColor = System.Drawing.Color.White;
             this.dtpAppTime.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpAppTime.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpAppTime.Location = new System.Drawing.Point(180, 240);
+            this.dtpAppTime.Location = new System.Drawing.Point(174, 312);
             this.dtpAppTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAppTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpAppTime.Name = "dtpAppTime";
@@ -365,62 +383,63 @@ namespace Hospital_Management_System.Forms
             // 
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblRoom.Location = new System.Drawing.Point(30, 293);
+            this.lblRoom.Location = new System.Drawing.Point(42, 365);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(78, 20);
             this.lblRoom.TabIndex = 12;
             this.lblRoom.Text = "Room No:";
             // 
-            // txtRoom_CI
+            // txtRoom
             // 
-            this.txtRoom_CI.BorderRadius = 8;
-            this.txtRoom_CI.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRoom_CI.DefaultText = "";
-            this.txtRoom_CI.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtRoom_CI.Location = new System.Drawing.Point(180, 285);
-            this.txtRoom_CI.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtRoom_CI.Name = "txtRoom_CI";
-            this.txtRoom_CI.PlaceholderText = "";
-            this.txtRoom_CI.SelectedText = "";
-            this.txtRoom_CI.Size = new System.Drawing.Size(350, 36);
-            this.txtRoom_CI.TabIndex = 13;
+            this.txtRoom.BorderRadius = 8;
+            this.txtRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRoom.DefaultText = "";
+            this.txtRoom.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtRoom.Location = new System.Drawing.Point(174, 357);
+            this.txtRoom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRoom.Name = "txtRoom";
+            this.txtRoom.PlaceholderText = "";
+            this.txtRoom.ReadOnly = true;
+            this.txtRoom.SelectedText = "";
+            this.txtRoom.Size = new System.Drawing.Size(350, 36);
+            this.txtRoom.TabIndex = 13;
             // 
             // lblReason
             // 
             this.lblReason.AutoSize = true;
             this.lblReason.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.lblReason.Location = new System.Drawing.Point(30, 338);
+            this.lblReason.Location = new System.Drawing.Point(42, 410);
             this.lblReason.Name = "lblReason";
             this.lblReason.Size = new System.Drawing.Size(62, 20);
             this.lblReason.TabIndex = 14;
             this.lblReason.Text = "Reason:";
             // 
-            // txtReason_CI
+            // Reason
             // 
-            this.txtReason_CI.BorderRadius = 8;
-            this.txtReason_CI.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtReason_CI.DefaultText = "";
-            this.txtReason_CI.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtReason_CI.Location = new System.Drawing.Point(180, 330);
-            this.txtReason_CI.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtReason_CI.Multiline = true;
-            this.txtReason_CI.Name = "txtReason_CI";
-            this.txtReason_CI.PlaceholderText = "";
-            this.txtReason_CI.SelectedText = "";
-            this.txtReason_CI.Size = new System.Drawing.Size(350, 80);
-            this.txtReason_CI.TabIndex = 15;
+            this.Reason.BorderRadius = 8;
+            this.Reason.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Reason.DefaultText = "";
+            this.Reason.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Reason.Location = new System.Drawing.Point(174, 402);
+            this.Reason.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Reason.Multiline = true;
+            this.Reason.Name = "Reason";
+            this.Reason.PlaceholderText = "";
+            this.Reason.SelectedText = "";
+            this.Reason.Size = new System.Drawing.Size(350, 80);
+            this.Reason.TabIndex = 15;
             // 
-            // btnRegisterAppointment
+            // btnRegister
             // 
-            this.btnRegisterAppointment.BorderRadius = 12;
-            this.btnRegisterAppointment.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
-            this.btnRegisterAppointment.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnRegisterAppointment.ForeColor = System.Drawing.Color.White;
-            this.btnRegisterAppointment.Location = new System.Drawing.Point(180, 520);
-            this.btnRegisterAppointment.Name = "btnRegisterAppointment";
-            this.btnRegisterAppointment.Size = new System.Drawing.Size(350, 45);
-            this.btnRegisterAppointment.TabIndex = 16;
-            this.btnRegisterAppointment.Text = "CONFIRM CHECK-IN";
+            this.btnRegister.BorderRadius = 12;
+            this.btnRegister.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(171)))), ((int)(((byte)(102)))));
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Location = new System.Drawing.Point(180, 522);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(274, 45);
+            this.btnRegister.TabIndex = 16;
+            this.btnRegister.Text = "CONFIRM CHECK-IN";
             // 
             // tabCheckOut
             // 
@@ -435,6 +454,18 @@ namespace Hospital_Management_System.Forms
             this.tabCheckOut.Size = new System.Drawing.Size(972, 642);
             this.tabCheckOut.TabIndex = 1;
             this.tabCheckOut.Text = "Finalize & Billing";
+            // 
+            // btnHistory
+            // 
+            this.btnHistory.BorderRadius = 10;
+            this.btnHistory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnHistory.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnHistory.ForeColor = System.Drawing.Color.White;
+            this.btnHistory.Location = new System.Drawing.Point(191, 585);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(165, 45);
+            this.btnHistory.TabIndex = 4;
+            this.btnHistory.Text = "View History";
             // 
             // txtSearchActive
             // 
@@ -453,25 +484,25 @@ namespace Hospital_Management_System.Forms
             // 
             // dgvActiveVisits
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvActiveVisits.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvActiveVisits.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.White;
+            this.dgvActiveVisits.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvActiveVisits.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this.dgvActiveVisits.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvActiveVisits.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvActiveVisits.DefaultCellStyle = dataGridViewCellStyle36;
             this.dgvActiveVisits.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvActiveVisits.Location = new System.Drawing.Point(20, 75);
             this.dgvActiveVisits.Name = "dgvActiveVisits";
@@ -707,17 +738,10 @@ namespace Hospital_Management_System.Forms
             this.btnCompleteVisit.Text = "PROCESS PAYMENT";
             this.btnCompleteVisit.Click += new System.EventHandler(this.btnCompleteVisit_Click);
             // 
-            // btnHistory
+            // errorProvider1
             // 
-            this.btnHistory.BorderRadius = 10;
-            this.btnHistory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnHistory.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.btnHistory.ForeColor = System.Drawing.Color.White;
-            this.btnHistory.Location = new System.Drawing.Point(191, 585);
-            this.btnHistory.Name = "btnHistory";
-            this.btnHistory.Size = new System.Drawing.Size(165, 45);
-            this.btnHistory.TabIndex = 4;
-            this.btnHistory.Text = "View History";
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
             // UC_CheckInOut
             // 
@@ -726,28 +750,31 @@ namespace Hospital_Management_System.Forms
             this.Size = new System.Drawing.Size(980, 700);
             this.tabControl.ResumeLayout(false);
             this.tabCheckIn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatientSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).EndInit();
             this.pnlCheckInForm.ResumeLayout(false);
             this.pnlCheckInForm.PerformLayout();
             this.tabCheckOut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActiveVisits)).EndInit();
             this.pnlBillingSummary.ResumeLayout(false);
             this.pnlBillingSummary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         private Guna2TabControl tabControl;
         private TabPage tabCheckIn, tabCheckOut;
-        private Guna2TextBox txtSearchPatient, txtSearchActive, txtAppID, txtPatientID_CI, txtPatientName_CI, txtRoom_CI, txtReason_CI, txtAppID_CO, txtPatient_CO, txtDoctor_CO, txtRoom_CO;
-        private Label lblAppID, lblPatID, lblPatName, lblSpeciality, lblDocName, lblTime, lblRoom, lblReason, lblAppID_CO, lblPat_CO, lblDoc_CO, lblRoom_CO, lblTotalLabel, lblFinalCost;
+        private Guna2TextBox txtSearchPatient, txtSearchActive, txtAppID, txtPatientID, txtPatientName, txtRoom, Reason, txtAppID_CO, txtPatient_CO, txtDoctor_CO, txtRoom_CO;
+        private Label lblAppID, lblPatID, lblPatName, lblSpeciality, lblDocName, lblDate, lblRoom, lblReason, lblAppID_CO, lblPat_CO, lblDoc_CO, lblRoom_CO, lblTotalLabel, lblFinalCost;
         private Guna2ComboBox cmbSpeciality, cmbDoctor;
         private Guna2DateTimePicker dtpAppTime;
-        private Guna2DataGridView dgvPatientSearch, dgvActiveVisits;
+        private Guna2DataGridView dgvPatient, dgvActiveVisits;
         private Guna2Panel pnlCheckInForm, pnlBillingSummary;
-        private Guna2Button btnRegisterAppointment, btnRefresh, btnCompleteVisit;
+        private Guna2Button btnRegister, btnRefresh, btnCompleteVisit;
         private Label label1;
         private Guna2TextBox txtReason;
         private Guna2Button btnHistory;
+        private Label label2;
+        private ErrorProvider errorProvider1;
     }
 }
