@@ -17,6 +17,7 @@ namespace Hospital_Management_System.Forms
         {
             InitializeComponent();
             SetupSampleData();
+            LoadDataForCheckIn();
         }
 
         private void SetupSampleData()

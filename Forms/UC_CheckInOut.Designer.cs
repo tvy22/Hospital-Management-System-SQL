@@ -28,6 +28,7 @@ namespace Hospital_Management_System.Forms
             this.txtSearchPatient = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvPatient = new Guna.UI2.WinForms.Guna2DataGridView();
             this.pnlCheckInForm = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblAppID = new System.Windows.Forms.Label();
             this.txtAppID = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblPatID = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@ namespace Hospital_Management_System.Forms
             this.lblTotalLabel = new System.Windows.Forms.Label();
             this.lblFinalCost = new System.Windows.Forms.Label();
             this.btnCompleteVisit = new Guna.UI2.WinForms.Guna2Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabCheckIn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
@@ -211,6 +211,16 @@ namespace Hospital_Management_System.Forms
             this.pnlCheckInForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 5, 5);
             this.pnlCheckInForm.Size = new System.Drawing.Size(570, 600);
             this.pnlCheckInForm.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(174, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(239, 32);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Appointment Details";
             // 
             // lblAppID
             // 
@@ -722,16 +732,6 @@ namespace Hospital_Management_System.Forms
             this.btnCompleteVisit.TabIndex = 10;
             this.btnCompleteVisit.Text = "PROCESS PAYMENT";
             this.btnCompleteVisit.Click += new System.EventHandler(this.btnCompleteVisit_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(174, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(239, 32);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Appointment Details";
             // 
             // UC_CheckInOut
             // 
