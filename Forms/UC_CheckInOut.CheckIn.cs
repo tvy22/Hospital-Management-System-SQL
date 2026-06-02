@@ -45,9 +45,11 @@ namespace Hospital_Management_System.Forms
             }
 
             var uniqueSpecialities = allDoctors.Select(d => d.Speciality).Distinct().ToList();
+            uniqueSpecialities.Insert(0, "Select speciality");
             cmbSpeciality.DataSource = uniqueSpecialities;
 
             ShowPatientsInCheckIn();
+            ShowDoctorsInCheckIn();
         }
 
         private void ShowPatientsInCheckIn()
@@ -74,9 +76,20 @@ namespace Hospital_Management_System.Forms
         private void ShowDoctorsInCheckIn()
         {
             string sp = cmbSpeciality.SelectedItem.ToString();
-            var filteredDoctors = allDoctors.Where(d => d.Speciality == sp).ToList();
-            cmbDoctor.DataSource = filteredDoctors;
-            cmbDoctor.SelectedIndex = -1;
+
+            if(sp == "Select speciality")
+            {
+                var list = allDoctors.ToList();
+                list.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor" });
+                cmbDoctor.DataSource = list;
+            }
+            else
+            {
+                var filteredDoctors = allDoctors.Where(d => d.Speciality == sp).ToList();
+                filteredDoctors.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor"});
+                cmbDoctor.DataSource = filteredDoctors;
+            }
+            cmbDoctor.SelectedIndex = 0;
         }
 
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
