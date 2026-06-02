@@ -6,17 +6,19 @@ using System.Data;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Hospital_Management_System.Models;
 
 namespace Hospital_Management_System.Forms
 {
     public partial class UC_CheckInOut : UserControl
     {
-        DataTable billingTable = new DataTable();
+        List<Checkin> checkinList = new List<Checkin>();
+        DataTable checkinTable = new DataTable();
 
         public UC_CheckInOut()
         {
             InitializeComponent();
-            SetupSampleData();
+            LoadCheckins();
             LoadDataForCheckIn();
             dgvPatient.CellClick += dgvPatient_CellClick;
             cmbSpeciality.SelectionChangeCommitted += cmbSpeciality_SelectionChangeCommitted;
@@ -24,24 +26,44 @@ namespace Hospital_Management_System.Forms
             btnRegister.Click += btnRegister_Click;
         }
 
-        private void SetupSampleData()
+        private void LoadCheckins()
         {
-            if (billingTable.Columns.Count == 0) 
+            if (checkinTable.Columns.Count == 0)
             {
-                billingTable.Columns.Add("VisitID");
-                billingTable.Columns.Add("PatientName");
-                billingTable.Columns.Add("DoctorName");
-                billingTable.Columns.Add("RoomNumber");
-                billingTable.Columns.Add("Reason");
-                billingTable.Columns.Add("ConsultationFee", typeof(decimal));
+                checkinTable.Columns.Add("ID");
+                checkinTable.Columns.Add("Patient");
+                checkinTable.Columns.Add("Doctor");
+                checkinTable.Columns.Add("Room");
+                checkinTable.Columns.Add("Reason");
+                checkinTable.Columns.Add("Fee", typeof(decimal));
             }
 
-            billingTable.Rows.Clear();
-            billingTable.Rows.Add("V-1001", "Vy", "Dr. Ta", "Room 10", "General Checkup", 150.00);
-            billingTable.Rows.Add("V-1002", "John Doe", "Dr. Smith", "Room 05", "Fever/Flu", 200.00);
-            billingTable.Rows.Add("V-1003", "Jane Smith", "Dr. Wilson", "Room 12", "Follow-up", 75.50);
+            checkinTable.Rows.Clear();
 
-            dgvActiveVisits.DataSource = billingTable;
+            //Get checkin data from file
+            if (File.Exists(fileCheckin))
+            {
+                FileStream fs = new FileStream(fileCheckin, FileMode.Open);
+                while(fs.Position != fs.Length)
+                {
+                    Checkin c = (Checkin)bf.Deserialize(fs);
+                    checkinList.Add(c);
+                }
+                fs.Close();
+
+                foreach (Checkin c in checkinList)
+                {
+                    checkinTable.Rows.Add(
+                        c.AppID,
+                        c.PatientName,
+                        c.DocName,
+                        c.RoomNumber,
+                        c.Reason
+                    );
+                }
+
+                dgvActiveVisits.DataSource = checkinTable;
+            }
         }
 
         private void dgvActiveVisits_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,13 +71,13 @@ namespace Hospital_Management_System.Forms
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvActiveVisits.Rows[e.RowIndex];
-                txtAppID_CO.Text = row.Cells["VisitID"].Value.ToString();
-                txtPatient_CO.Text = row.Cells["PatientName"].Value.ToString();
-                txtDoctor_CO.Text = row.Cells["DoctorName"].Value.ToString();
-                txtRoom_CO.Text = row.Cells["RoomNumber"].Value.ToString();
+                txtAppID_CO.Text = row.Cells["ID"].Value.ToString();
+                txtPatient_CO.Text = row.Cells["Patient"].Value.ToString();
+                txtDoctor_CO.Text = row.Cells["Doctor"].Value.ToString();
+                txtRoom_CO.Text = row.Cells["Room"].Value.ToString();
                 txtReason.Text = row.Cells["Reason"].Value.ToString();
 
-                decimal fee = Convert.ToDecimal(row.Cells["ConsultationFee"].Value);
+                decimal fee = Convert.ToDecimal(row.Cells["Fee"].Value);
                 lblFinalCost.Text = fee.ToString("C2");
             }
         }
@@ -105,7 +127,7 @@ namespace Hospital_Management_System.Forms
                     MessageBox.Show("Payment Processed Successfully!", "Success");
 
                     ClearFields();
-                    SetupSampleData();
+                    LoadCheckins();
                 }
                 catch (Exception ex)
                 {
@@ -124,7 +146,7 @@ namespace Hospital_Management_System.Forms
             lblFinalCost.Text = "$ 0.00";
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e) => SetupSampleData();
+        private void btnRefresh_Click(object sender, EventArgs e) => LoadCheckins();
 
         // Empty events to avoid Designer errors
         private void txtSearchActive_TextChanged(object sender, EventArgs e) 
@@ -133,7 +155,7 @@ namespace Hospital_Management_System.Forms
             string searchText = txtSearchActive.Text.Replace("'", "''"); // Escape single quotes for safety
 
             // 2. Create a DataView from your billingTable
-            DataView dv = billingTable.DefaultView;
+            DataView dv = checkinTable.DefaultView;
 
             // 3. Apply the filter. 
             // This searches across VisitID OR PatientName. You can add more columns if needed.
