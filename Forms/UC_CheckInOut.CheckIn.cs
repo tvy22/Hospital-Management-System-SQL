@@ -12,6 +12,8 @@ namespace Hospital_Management_System.Forms
     {
         List<Patient> allPatients = new List<Patient>();
         List<Doctor> allDoctors = new List<Doctor>();
+        List<Checkin> allCheckins = new List<Checkin>();
+        string fileCheckin = "checkin.dat";
         BinaryFormatter bf = new BinaryFormatter();
 
         private void LoadDataForCheckIn()
@@ -110,6 +112,39 @@ namespace Hospital_Management_System.Forms
                 txtPatientID.Text = row.Cells["PatientID"].Value.ToString();
                 txtPatientName.Text = row.Cells["FullName"].Value.ToString();
             }
+        }
+
+        private void ApppointmentID()
+        {
+            //string fileCheckin = "checkin.dat";
+        }
+
+        private void SaveAllToFile()
+        {
+            using(FileStream fs = new FileStream(fileCheckin, FileMode.Create))
+            {
+                foreach(Checkin c in allCheckins)
+                {
+                    bf.Serialize(fs, c);
+                }
+            }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            //Create new appointment object
+            Checkin newApp = new Checkin();
+            newApp.AppID = txtAppID.Text;
+            newApp.PatientID = txtPatientID.Text;
+            newApp.PatientName = txtPatientName.Text;
+            newApp.DocName = cmbDoctor.SelectedItem.ToString();
+            newApp.DocSpeciality = cmbSpeciality.SelectedItem.ToString();
+            newApp.Date = dtpAppTime.Value;
+            newApp.RoomNumber = txtRoom.Text;
+            newApp.Reason = txtReason.Text;
+
+            allCheckins.Add(newApp);
+            SaveAllToFile();
         }
     }
 }

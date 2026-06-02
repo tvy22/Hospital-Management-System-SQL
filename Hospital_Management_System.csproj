@@ -91,6 +91,7 @@
     <Compile Include="Forms\UC_Patients.Designer.cs">
       <DependentUpon>UC_Patients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Checkin.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Program.cs" />

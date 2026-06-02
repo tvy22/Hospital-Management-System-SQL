@@ -21,6 +21,7 @@ namespace Hospital_Management_System.Forms
             dgvPatient.CellClick += dgvPatient_CellClick;
             cmbSpeciality.SelectionChangeCommitted += cmbSpeciality_SelectionChangeCommitted;
             cmbDoctor.SelectionChangeCommitted += cmbDoctor_SelectionChangeCommitted;
+            btnRegister.Click += btnRegister_Click;
         }
 
         private void SetupSampleData()
