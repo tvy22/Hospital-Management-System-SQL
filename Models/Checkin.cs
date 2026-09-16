@@ -17,5 +17,7 @@ namespace Hospital_Management_System_SQL.Models
         public DateTime Date { get; set; }
         public string RoomNumber { get; set; }
         public string Reason { get; set; }
+        public string Status { get; set; }
+        public DateTime? CheckoutDate { get; set; }
     }
 }

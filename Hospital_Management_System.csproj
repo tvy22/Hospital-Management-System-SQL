@@ -91,6 +91,10 @@
     <Compile Include="Forms\UC_Patients.Designer.cs">
       <DependentUpon>UC_Patients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ICheckinRepository.cs" />
+    <Compile Include="Interfaces\IDoctorRepository.cs" />
+    <Compile Include="Interfaces\IEntityRepository.cs" />
+    <Compile Include="Interfaces\IPatientRepository.cs" />
     <Compile Include="Models\Checkin.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -139,7 +143,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Logic\" />
   </ItemGroup>
   <ItemGroup>
