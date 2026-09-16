@@ -64,9 +64,6 @@
     <Compile Include="Forms\MainDashboard.Designer.cs">
       <DependentUpon>MainDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UC_CheckInOut.CheckIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Forms\UC_CheckInOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +92,7 @@
     <Compile Include="Interfaces\IDoctorRepository.cs" />
     <Compile Include="Interfaces\IEntityRepository.cs" />
     <Compile Include="Interfaces\IPatientRepository.cs" />
+    <Compile Include="Logic\CheckInOutRepository.cs" />
     <Compile Include="Logic\DatabaseHelper.cs" />
     <Compile Include="Logic\DoctorRepository.cs" />
     <Compile Include="Logic\PatientRepository.cs" />
