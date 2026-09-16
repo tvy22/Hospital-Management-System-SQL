@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Hospital_Management_System_SQL.Interfaces;
+using Hospital_Management_System_SQL.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using Hospital_Management_System_SQL.Interfaces;
-using Hospital_Management_System_SQL.Models;
 
 namespace Hospital_Management_System_SQL.Logic
 {
@@ -109,7 +110,15 @@ namespace Hospital_Management_System_SQL.Logic
                 cmd.Parameters.AddWithValue("@Gender", entity.Gender ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Status", entity.Status ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Shift", entity.Shift ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@DoctorImage", (object)entity.DoctorImage ?? DBNull.Value);
+                
+                if (entity.DoctorImage != null)
+                {
+                    cmd.Parameters.Add("@DoctorImage", SqlDbType.VarBinary, -1).Value = entity.DoctorImage;
+                }
+                else
+                {
+                    cmd.Parameters.Add("@DoctorImage", SqlDbType.VarBinary, -1).Value = DBNull.Value;
+                }
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
