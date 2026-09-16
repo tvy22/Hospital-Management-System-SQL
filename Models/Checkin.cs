@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Hospital_Management_System_SQL.Models
 {
-    [Serializable]
     public class Checkin
     {
         public string AppID { get; set; }
@@ -19,5 +18,6 @@ namespace Hospital_Management_System_SQL.Models
         public string Reason { get; set; }
         public string Status { get; set; }
         public DateTime? CheckoutDate { get; set; }
+        public decimal Fee { get; set; }
     }
 }

@@ -1,30 +1,170 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using Hospital_Management_System_SQL.Logic;
 using Hospital_Management_System_SQL.Models;
 
 namespace Hospital_Management_System_SQL.Forms
 {
     public partial class UC_CheckInOut : UserControl
     {
-        List<Checkin> checkinList = new List<Checkin>();
-        DataTable checkinTable = new DataTable();
+        private readonly CheckInOutRepository _checkInOutRepo = new CheckInOutRepository();
+        private readonly PatientRepository _patientRepo = new PatientRepository();
+        private readonly DoctorRepository _doctorRepo = new DoctorRepository();
+
+        private List<Checkin> checkinList = new List<Checkin>();
+        private List<Patient> allPatients = new List<Patient>();
+        private List<Doctor> allDoctors = new List<Doctor>();
+        private DataTable checkinTable = new DataTable();
 
         public UC_CheckInOut()
         {
             InitializeComponent();
             LoadCheckins();
             LoadDataForCheckIn();
+
             dgvPatient.CellClick += dgvPatient_CellClick;
             cmbSpeciality.SelectionChangeCommitted += cmbSpeciality_SelectionChangeCommitted;
             cmbDoctor.SelectionChangeCommitted += cmbDoctor_SelectionChangeCommitted;
             btnRegister.Click += btnRegister_Click;
         }
+
+        // ================= CHECK-IN INITIALIZATION & EVENTS =================
+
+        private void LoadDataForCheckIn()
+        {
+            txtAppID.Text = _checkInOutRepo.GenerateNextAppID();
+
+            allPatients = _patientRepo.GetAll();
+            allDoctors = _doctorRepo.GetAll();
+
+            var uniqueSpecialities = allDoctors
+                .Select(d => d.Speciality)
+                .Where(s => !string.IsNullOrEmpty(s))
+                .Distinct()
+                .ToList();
+
+            uniqueSpecialities.Insert(0, "Select speciality");
+            cmbSpeciality.DataSource = uniqueSpecialities;
+
+            ShowPatientsInCheckIn();
+            ShowDoctorsInCheckIn();
+        }
+
+        private void ShowPatientsInCheckIn()
+        {
+            dgvPatient.DataSource = null;
+            dgvPatient.DataSource = allPatients;
+
+            if (dgvPatient.Columns.Count > 0)
+            {
+                dgvPatient.Columns["PatientID"].HeaderText = "ID";
+                dgvPatient.Columns["FullName"].HeaderText = "Name";
+                dgvPatient.Columns["DateOfBirth"].HeaderText = "Birthdate";
+
+                if (dgvPatient.Columns.Contains("MedicalHistory"))
+                    dgvPatient.Columns["MedicalHistory"].Visible = false;
+            }
+        }
+
+        private void ShowDoctorsInCheckIn()
+        {
+            string sp = cmbSpeciality.SelectedItem?.ToString();
+
+            if (sp == "Select speciality" || string.IsNullOrEmpty(sp))
+            {
+                var list = allDoctors.ToList();
+                list.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor" });
+                cmbDoctor.DataSource = list;
+            }
+            else
+            {
+                var filteredDoctors = allDoctors.Where(d => d.Speciality == sp).ToList();
+                filteredDoctors.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor" });
+                cmbDoctor.DataSource = filteredDoctors;
+            }
+            cmbDoctor.SelectedIndex = 0;
+        }
+
+        private void cmbSpeciality_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ShowDoctorsInCheckIn();
+        }
+
+        private void cmbDoctor_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Doctor selectedDoc = cmbDoctor.SelectedItem as Doctor;
+            if (selectedDoc != null && selectedDoc.DoctorID != "0")
+            {
+                cmbSpeciality.SelectedItem = selectedDoc.Speciality;
+                txtRoom.Text = selectedDoc.RoomNumber;
+            }
+        }
+
+        private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvPatient.Rows[e.RowIndex];
+                txtPatientID.Text = row.Cells["PatientID"].Value?.ToString();
+                txtPatientName.Text = row.Cells["FullName"].Value?.ToString();
+            }
+        }
+
+        private bool IsValidCheckIn()
+        {
+            errorProvider1.Clear();
+            bool isAllValid = true;
+
+            if (string.IsNullOrWhiteSpace(txtAppID.Text))
+            {
+                errorProvider1.SetError(txtAppID, "ID is required.");
+                isAllValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPatientID.Text) || string.IsNullOrWhiteSpace(txtPatientName.Text))
+            {
+                errorProvider1.SetError(txtPatientID, "Select a patient from the table.");
+                isAllValid = false;
+            }
+
+            if (cmbDoctor.SelectedIndex <= 0 || cmbSpeciality.SelectedIndex <= 0)
+            {
+                errorProvider1.SetError(cmbDoctor, "Select a doctor.");
+                isAllValid = false;
+            }
+
+            return isAllValid;
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (!IsValidCheckIn()) return;
+
+            Checkin newApp = new Checkin
+            {
+                AppID = txtAppID.Text,
+                PatientID = txtPatientID.Text,
+                PatientName = txtPatientName.Text,
+                DocName = cmbDoctor.SelectedItem.ToString(),
+                DocSpeciality = cmbSpeciality.SelectedItem.ToString(),
+                Date = dtpAppTime.Value,
+                RoomNumber = txtRoom.Text,
+                Reason = txtReason.Text,
+                Fee = 50.00m
+            };
+
+            _checkInOutRepo.RegisterCheckIn(newApp);
+
+            MessageBox.Show("Appointment Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            LoadCheckins();
+            txtAppID.Text = _checkInOutRepo.GenerateNextAppID();
+        }
+
+        // ================= CHECK-OUT LOGIC =================
 
         private void LoadCheckins()
         {
@@ -40,30 +180,22 @@ namespace Hospital_Management_System_SQL.Forms
 
             checkinTable.Rows.Clear();
 
-            //Get checkin data from file
-            if (File.Exists(fileCheckin))
+            // Fetch active visits from SQL Server instead of binary files
+            checkinList = _checkInOutRepo.GetActiveVisits();
+
+            foreach (Checkin c in checkinList)
             {
-                FileStream fs = new FileStream(fileCheckin, FileMode.Open);
-                while(fs.Position != fs.Length)
-                {
-                    Checkin c = (Checkin)bf.Deserialize(fs);
-                    checkinList.Add(c);
-                }
-                fs.Close();
-
-                foreach (Checkin c in checkinList)
-                {
-                    checkinTable.Rows.Add(
-                        c.AppID,
-                        c.PatientName,
-                        c.DocName,
-                        c.RoomNumber,
-                        c.Reason
-                    );
-                }
-
-                dgvActiveVisits.DataSource = checkinTable;
+                checkinTable.Rows.Add(
+                    c.AppID,
+                    c.PatientName,
+                    c.DocName,
+                    c.RoomNumber,
+                    c.Reason,
+                    c.Fee
+                );
             }
+
+            dgvActiveVisits.DataSource = checkinTable;
         }
 
         private void dgvActiveVisits_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -71,11 +203,11 @@ namespace Hospital_Management_System_SQL.Forms
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvActiveVisits.Rows[e.RowIndex];
-                txtAppID_CO.Text = row.Cells["ID"].Value.ToString();
-                txtPatient_CO.Text = row.Cells["Patient"].Value.ToString();
-                txtDoctor_CO.Text = row.Cells["Doctor"].Value.ToString();
-                txtRoom_CO.Text = row.Cells["Room"].Value.ToString();
-                txtReason.Text = row.Cells["Reason"].Value.ToString();
+                txtAppID_CO.Text = row.Cells["ID"].Value?.ToString();
+                txtPatient_CO.Text = row.Cells["Patient"].Value?.ToString();
+                txtDoctor_CO.Text = row.Cells["Doctor"].Value?.ToString();
+                txtRoom_CO.Text = row.Cells["Room"].Value?.ToString();
+                txtReason.Text = row.Cells["Reason"].Value?.ToString();
 
                 decimal fee = Convert.ToDecimal(row.Cells["Fee"].Value);
                 lblFinalCost.Text = fee.ToString("C2");
@@ -84,45 +216,22 @@ namespace Hospital_Management_System_SQL.Forms
 
         private void btnCompleteVisit_Click(object sender, EventArgs e)
         {
-            // 1. Validate selection
             if (string.IsNullOrEmpty(txtAppID_CO.Text))
             {
                 MessageBox.Show("Please select a visit from the list first.", "No Selection");
                 return;
             }
 
-            // 2. Confirmation
             DialogResult confirm = MessageBox.Show("Process payment and complete this visit?", "Confirm", MessageBoxButtons.YesNo);
 
             if (confirm == DialogResult.Yes)
             {
                 try
                 {
-                    string filePath = "checkouts.dat";
-                    BinaryFormatter BF = new BinaryFormatter();
-                    List<CheckIn> updatedList = new List<CheckIn>();
+                    decimal cost = decimal.TryParse(lblFinalCost.Text.Replace("$", "").Trim(), out decimal parsed) ? parsed : 0.00m;
 
-                    // 3. Load from FileStream
-                    if (File.Exists(filePath))
-                    {
-                        using (FileStream fsRead = new FileStream(filePath, FileMode.Open))
-                        {
-                            updatedList = (List<CheckIn>)BF.Deserialize(fsRead);
-                        }
-                    }
-
-                    // 4. Update
-                    CheckIn record = updatedList.Find(x => x.VisitID == txtAppID_CO.Text);
-                    if (record != null)
-                    {
-                        record.Status = "Completed";
-                        record.Cost = lblFinalCost.Text;
-                    }
-
-                    // 5. Save using FileStream (Overwriting)
-                    FileStream Fn = new FileStream(filePath, FileMode.Create);
-                    BF.Serialize(Fn, updatedList);
-                    Fn.Close(); // 6. Important Closure
+                    // Update database directly via Repository
+                    _checkInOutRepo.CompleteCheckOut(txtAppID_CO.Text, cost);
 
                     MessageBox.Show("Payment Processed Successfully!", "Success");
 
@@ -148,39 +257,22 @@ namespace Hospital_Management_System_SQL.Forms
 
         private void btnRefresh_Click(object sender, EventArgs e) => LoadCheckins();
 
-        // Empty events to avoid Designer errors
-        private void txtSearchActive_TextChanged(object sender, EventArgs e) 
+        private void txtSearchActive_TextChanged(object sender, EventArgs e)
         {
-            // 1. Get the text from the search box
-            string searchText = txtSearchActive.Text.Replace("'", "''"); // Escape single quotes for safety
+            string searchText = txtSearchActive.Text.Replace("'", "''");
 
-            // 2. Create a DataView from your billingTable
             DataView dv = checkinTable.DefaultView;
+            dv.RowFilter = string.Format("ID LIKE '%{0}%' OR Patient LIKE '%{0}%'", searchText);
 
-            // 3. Apply the filter. 
-            // This searches across VisitID OR PatientName. You can add more columns if needed.
-            dv.RowFilter = string.Format("VisitID LIKE '%{0}%' OR PatientName LIKE '%{0}%'", searchText);
-
-            // 4. Update the Grid display
             dgvActiveVisits.DataSource = dv;
         }
+
+        // Empty events to avoid Designer errors
         private void txtAppID_CO_TextChanged(object sender, EventArgs e) { }
         private void txtPatient_CO_TextChanged(object sender, EventArgs e) { }
         private void txtDoctor_CO_TextChanged(object sender, EventArgs e) { }
         private void txtRoom_CO_TextChanged(object sender, EventArgs e) { }
         private void txtReason_TextChanged(object sender, EventArgs e) { }
         private void lblFinalCost_Click(object sender, EventArgs e) { }
-    }
-
-    // This class must be OUTSIDE the UC_CheckInOut class but INSIDE the namespace
-    [Serializable]
-    public class CheckIn
-    {
-        public string VisitID { get; set; }
-        public string PatientName { get; set; }
-        public string DoctorName { get; set; }
-        public string RoomNumber { get; set; }
-        public string Status { get; set; }
-        public string Cost { get; set; }
     }
 }
