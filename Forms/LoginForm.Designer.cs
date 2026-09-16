@@ -1,4 +1,4 @@
-﻿namespace Hospital_Management_System.Forms
+﻿namespace Hospital_Management_System_SQL.Forms
 {
     partial class LoginForm
     {
@@ -192,7 +192,7 @@
             // 
             // pnlLeft
             // 
-            this.pnlLeft.BackgroundImage = global::Hospital_Management_System.Properties.Resources.login_bg;
+            this.pnlLeft.BackgroundImage = global::Hospital_Management_System_SQL.Properties.Resources.login_bg;
             this.pnlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);

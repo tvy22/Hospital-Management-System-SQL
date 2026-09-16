@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hospital_Management_System.Forms
+namespace Hospital_Management_System_SQL.Forms
 {
     public partial class LoginForm : Form
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1B8E7545-5385-46AC-A107-2490551FD765}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Hospital_Management_System</RootNamespace>
-    <AssemblyName>Hospital_Management_System</AssemblyName>
+    <RootNamespace>Hospital_Management_System_SQL</RootNamespace>
+    <AssemblyName>Hospital_Management_System_SQL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Hospital_Management_System.Models;
+using Hospital_Management_System_SQL.Models;
 
-namespace Hospital_Management_System.Forms
+namespace Hospital_Management_System_SQL.Forms
 {
     public partial class UC_Patients : UserControl
     {

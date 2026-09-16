@@ -1,4 +1,4 @@
-﻿using Hospital_Management_System.Models;
+﻿using Hospital_Management_System_SQL.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms; // Added for DataGridView access
 
-namespace Hospital_Management_System.Forms
+namespace Hospital_Management_System_SQL.Forms
 {
     public partial class UC_CheckInOut
     {

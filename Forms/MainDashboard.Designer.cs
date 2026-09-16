@@ -1,4 +1,4 @@
-﻿namespace Hospital_Management_System.Forms
+﻿namespace Hospital_Management_System_SQL.Forms
 {
     partial class MainDashboard
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hospital_Management_System.Models
+namespace Hospital_Management_System_SQL.Models
 {
     [Serializable]
     public class Checkin

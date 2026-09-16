@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hospital_Management_System.Models
+namespace Hospital_Management_System_SQL.Models
 {
     [Serializable]
     public class Patient

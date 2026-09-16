@@ -1,11 +1,11 @@
-﻿using Hospital_Management_System.Forms;
+﻿using Hospital_Management_System_SQL.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hospital_Management_System
+namespace Hospital_Management_System_SQL
 {
     internal static class Program
     {
