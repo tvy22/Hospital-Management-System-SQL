@@ -95,6 +95,8 @@
     <Compile Include="Interfaces\IDoctorRepository.cs" />
     <Compile Include="Interfaces\IEntityRepository.cs" />
     <Compile Include="Interfaces\IPatientRepository.cs" />
+    <Compile Include="Logic\DatabaseHelper.cs" />
+    <Compile Include="Logic\DoctorRepository.cs" />
     <Compile Include="Models\Checkin.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -142,9 +144,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\hospital_hero.jpg.jpg" />
     <None Include="Resources\hospital_hero2.jpg" />

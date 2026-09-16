@@ -9,7 +9,6 @@ namespace Hospital_Management_System_SQL.Interfaces
 {
     public interface ICheckinRepository : IEntityRepository<Checkin>
     {
-        void LoadCheckins();
-        void ClearFields();
+
     }
 }
