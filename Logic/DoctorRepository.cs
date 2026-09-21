@@ -166,9 +166,10 @@ namespace Hospital_Management_System_SQL.Logic
         {
             if (imageIn == null) return null;
 
+            using (Bitmap tempBitmap = new Bitmap(imageIn))
             using (MemoryStream ms = new MemoryStream())
             {
-                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                tempBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 return ms.ToArray();
             }
         }

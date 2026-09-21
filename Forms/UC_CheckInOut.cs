@@ -32,7 +32,7 @@ namespace Hospital_Management_System_SQL.Forms
             dgvActiveVisits.SelectionChanged -= dgvActiveVisits_SelectionChanged;
             dgvActiveVisits.SelectionChanged += dgvActiveVisits_SelectionChanged;
 
-            // CRITICAL: Automatically clear selection whenever grid data finishes loading
+            // Automatically clear selection whenever grid data finishes loading
             dgvActiveVisits.DataBindingComplete -= dgvActiveVisits_DataBindingComplete;
             dgvActiveVisits.DataBindingComplete += dgvActiveVisits_DataBindingComplete;
 
@@ -67,7 +67,7 @@ namespace Hospital_Management_System_SQL.Forms
             dgvPatient.MultiSelect = false;
         }
 
-        // ================= CHECK-IN INITIALIZATION & EVENTS =================
+        // ================= CHECK-IN LOGIC =================
 
         private void LoadDataForCheckIn()
         {
@@ -196,8 +196,28 @@ namespace Hospital_Management_System_SQL.Forms
 
             MessageBox.Show("Appointment Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            ClearCheckInFields();
             LoadCheckins();
             txtAppID.Text = _checkInOutRepo.GenerateNextAppID();
+        }
+
+        private void ClearCheckInFields()
+        {
+            txtPatientID.Clear();
+            txtPatientName.Clear();
+            txtRoom.Clear();
+            txtReason.Clear();
+
+            if (cmbSpeciality.Items.Count > 0)
+                cmbSpeciality.SelectedIndex = 0;
+
+            if (cmbDoctor.Items.Count > 0)
+                cmbDoctor.SelectedIndex = 0;
+
+            dtpAppTime.Value = DateTime.Now;
+
+            dgvPatient.ClearSelection();
+            errorProvider1.Clear();
         }
 
         // ================= CHECK-OUT LOGIC =================

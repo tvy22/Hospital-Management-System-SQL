@@ -64,12 +64,26 @@ namespace Hospital_Management_System_SQL.Forms
                 dgvDoctors.Columns["ConsultationFee"].HeaderText = "Fee($)";
                 dgvDoctors.Columns["DateOfBirth"].HeaderText = "Birthdate";
 
+                // Set explicit column display order (0-based)
+                dgvDoctors.Columns["DoctorID"].DisplayIndex = 0;
+                dgvDoctors.Columns["FullName"].DisplayIndex = 1;
+                dgvDoctors.Columns["Speciality"].DisplayIndex = 2;
+                dgvDoctors.Columns["RoomNumber"].DisplayIndex = 3;
+                dgvDoctors.Columns["ConsultationFee"].DisplayIndex = 4;
+                dgvDoctors.Columns["Shift"].DisplayIndex = 5;
+                dgvDoctors.Columns["Status"].DisplayIndex = 6;
+                dgvDoctors.Columns["Phone"].DisplayIndex = 7;
+                dgvDoctors.Columns["Email"].DisplayIndex = 8;
+                dgvDoctors.Columns["Gender"].DisplayIndex = 9;
+                dgvDoctors.Columns["DateOfBirth"].DisplayIndex = 10;
+
                 if (dgvDoctors.Columns.Contains("DoctorImage"))
                 {
                     DataGridViewImageColumn imgCol = (DataGridViewImageColumn)dgvDoctors.Columns["DoctorImage"];
                     imgCol.HeaderText = "Photo";
                     imgCol.Visible = true;
                     imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                    imgCol.DisplayIndex = 11;
 
                     dgvDoctors.RowTemplate.Height = 60;
                     foreach (DataGridViewRow row in dgvDoctors.Rows)

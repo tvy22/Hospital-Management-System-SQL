@@ -58,6 +58,15 @@ namespace Hospital_Management_System_SQL.Forms
                 dgvPatients.Columns["FullName"].HeaderText = "Name";
                 dgvPatients.Columns["MedicalHistory"].HeaderText = "Medical History";
                 dgvPatients.Columns["DateOfBirth"].HeaderText = "Birthdate";
+
+                //Set column display order
+                dgvPatients.Columns["PatientID"].DisplayIndex = 0;
+                dgvPatients.Columns["FullName"].DisplayIndex = 1;
+                dgvPatients.Columns["Phone"].DisplayIndex = 2;
+                dgvPatients.Columns["Gender"].DisplayIndex = 3;
+                dgvPatients.Columns["DateOfBirth"].DisplayIndex = 4;
+                dgvPatients.Columns["MedicalHistory"].DisplayIndex = 5;
+
             }
         }
 
