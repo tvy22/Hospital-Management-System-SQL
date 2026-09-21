@@ -22,13 +22,49 @@ namespace Hospital_Management_System_SQL.Forms
         public UC_CheckInOut()
         {
             InitializeComponent();
+            this.Load += UC_CheckInOut_Load;
+            ConfigureGridProperties();
+
+            // Wire up event handlers cleanly (prevent duplicates)
+            dgvPatient.CellClick -= dgvPatient_CellClick;
+            dgvPatient.CellClick += dgvPatient_CellClick;
+
+            dgvActiveVisits.SelectionChanged -= dgvActiveVisits_SelectionChanged;
+            dgvActiveVisits.SelectionChanged += dgvActiveVisits_SelectionChanged;
+
+            // CRITICAL: Automatically clear selection whenever grid data finishes loading
+            dgvActiveVisits.DataBindingComplete -= dgvActiveVisits_DataBindingComplete;
+            dgvActiveVisits.DataBindingComplete += dgvActiveVisits_DataBindingComplete;
+
+            cmbSpeciality.SelectionChangeCommitted -= cmbSpeciality_SelectionChangeCommitted;
+            cmbSpeciality.SelectionChangeCommitted += cmbSpeciality_SelectionChangeCommitted;
+
+            cmbDoctor.SelectionChangeCommitted -= cmbDoctor_SelectionChangeCommitted;
+            cmbDoctor.SelectionChangeCommitted += cmbDoctor_SelectionChangeCommitted;
+
+            btnRegister.Click -= btnRegister_Click;
+            btnRegister.Click += btnRegister_Click;
+
+            btnCompleteVisit.Click -= btnCompleteVisit_Click;
+            btnCompleteVisit.Click += btnCompleteVisit_Click;
+
             LoadCheckins();
             LoadDataForCheckIn();
+        }
 
-            dgvPatient.CellClick += dgvPatient_CellClick;
-            cmbSpeciality.SelectionChangeCommitted += cmbSpeciality_SelectionChangeCommitted;
-            cmbDoctor.SelectionChangeCommitted += cmbDoctor_SelectionChangeCommitted;
-            btnRegister.Click += btnRegister_Click;
+        private void ConfigureGridProperties()
+        {
+            dgvActiveVisits.ReadOnly = true;
+            dgvActiveVisits.AllowUserToAddRows = false;
+            dgvActiveVisits.AllowUserToDeleteRows = false;
+            dgvActiveVisits.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvActiveVisits.MultiSelect = false;
+
+            dgvPatient.ReadOnly = true;
+            dgvPatient.AllowUserToAddRows = false;
+            dgvPatient.AllowUserToDeleteRows = false;
+            dgvPatient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPatient.MultiSelect = false;
         }
 
         // ================= CHECK-IN INITIALIZATION & EVENTS =================
@@ -180,7 +216,6 @@ namespace Hospital_Management_System_SQL.Forms
 
             checkinTable.Rows.Clear();
 
-            // Fetch active visits from SQL Server instead of binary files
             checkinList = _checkInOutRepo.GetActiveVisits();
 
             foreach (Checkin c in checkinList)
@@ -195,22 +230,43 @@ namespace Hospital_Management_System_SQL.Forms
                 );
             }
 
+            // Setting DataSource automatically causes DataBindingComplete to trigger
             dgvActiveVisits.DataSource = checkinTable;
         }
 
-        private void dgvActiveVisits_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // Fires after DataGridView finishes binding to DataSource
+        private void dgvActiveVisits_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvActiveVisits.Rows[e.RowIndex];
-                txtAppID_CO.Text = row.Cells["ID"].Value?.ToString();
-                txtPatient_CO.Text = row.Cells["Patient"].Value?.ToString();
-                txtDoctor_CO.Text = row.Cells["Doctor"].Value?.ToString();
-                txtRoom_CO.Text = row.Cells["Room"].Value?.ToString();
-                txtReason.Text = row.Cells["Reason"].Value?.ToString();
+            dgvActiveVisits.ClearSelection();
+            ClearFields();
+        }
 
-                decimal fee = Convert.ToDecimal(row.Cells["Fee"].Value);
-                lblFinalCost.Text = fee.ToString("C2");
+        private void dgvActiveVisits_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvActiveVisits.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvActiveVisits.SelectedRows[0];
+
+                txtAppID_CO.Text = row.Cells["ID"].Value?.ToString() ?? string.Empty;
+                txtPatient_CO.Text = row.Cells["Patient"].Value?.ToString() ?? string.Empty;
+                txtDoctor_CO.Text = row.Cells["Doctor"].Value?.ToString() ?? string.Empty;
+                txtRoom_CO.Text = row.Cells["Room"].Value?.ToString() ?? string.Empty;
+                txtReason.Text = row.Cells["Reason"].Value?.ToString() ?? string.Empty;
+
+                var feeObj = row.Cells["Fee"].Value;
+                if (feeObj != null && feeObj != DBNull.Value && decimal.TryParse(feeObj.ToString(), out decimal fee))
+                {
+                    lblFinalCost.Text = fee.ToString("C2");
+                }
+                else
+                {
+                    lblFinalCost.Text = "$0.00";
+                }
+            }
+            else
+            {
+                // Clear textboxes if no row is selected
+                ClearFields();
             }
         }
 
@@ -230,12 +286,10 @@ namespace Hospital_Management_System_SQL.Forms
                 {
                     decimal cost = decimal.TryParse(lblFinalCost.Text.Replace("$", "").Trim(), out decimal parsed) ? parsed : 0.00m;
 
-                    // Update database directly via Repository
                     _checkInOutRepo.CompleteCheckOut(txtAppID_CO.Text, cost);
 
                     MessageBox.Show("Payment Processed Successfully!", "Success");
 
-                    ClearFields();
                     LoadCheckins();
                 }
                 catch (Exception ex)
@@ -274,5 +328,11 @@ namespace Hospital_Management_System_SQL.Forms
         private void txtRoom_CO_TextChanged(object sender, EventArgs e) { }
         private void txtReason_TextChanged(object sender, EventArgs e) { }
         private void lblFinalCost_Click(object sender, EventArgs e) { }
+
+        private void UC_CheckInOut_Load(object sender, EventArgs e)
+        {
+            dgvActiveVisits.ClearSelection();
+            ClearFields();
+        }
     }
 }
