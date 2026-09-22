@@ -129,8 +129,8 @@
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(220, 120);
             this.lblBrand.TabIndex = 0;
-            this.lblBrand.Text = "HOSPITAL";
-            this.lblBrand.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBrand.Text = "  HOSPITAL";
+            this.lblBrand.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlContent
             // 
@@ -144,7 +144,7 @@
             // btnLogout
             // 
             this.btnLogout.BorderRadius = 10;
-            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(71)))), ((int)(((byte)(87)))));
+            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(60)))), ((int)(((byte)(74)))));
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Location = new System.Drawing.Point(27, 634);

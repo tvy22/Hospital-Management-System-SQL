@@ -100,6 +100,7 @@
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\LoginForm.resx">
@@ -151,6 +152,9 @@
     <None Include="Resources\doctor.jpg" />
     <None Include="Resources\doctor - Copy.jpg" />
     <None Include="Resources\doctor - Copy %282%29.jpg" />
+    <None Include="Resources\hospital.png" />
+    <None Include="Resources\hospital2.png" />
+    <None Include="Resources\hospital3.png" />
     <Content Include="Resources\login_bg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

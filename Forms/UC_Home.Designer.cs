@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.lblHelp = new System.Windows.Forms.Label();
@@ -65,14 +64,14 @@
             this.lblHelp.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lblHelp.Location = new System.Drawing.Point(55, 570);
             this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(692, 23);
+            this.lblHelp.Size = new System.Drawing.Size(644, 23);
             this.lblHelp.TabIndex = 3;
-            this.lblHelp.Text = "Please use the navigation menu on the left to manage doctors, patients, or proces" +
-    "s check-ins.";
+            this.lblHelp.Text = "Use the navigation menu on the left to manage doctors, patients, or process check" +
+    "-ins.";
             // 
             // picHero
             // 
-            this.picHero.Image = ((System.Drawing.Image)(resources.GetObject("picHero.Image")));
+            this.picHero.Image = global::Hospital_Management_System_SQL.Properties.Resources.hospital3;
             this.picHero.Location = new System.Drawing.Point(50, 150);
             this.picHero.Name = "picHero";
             this.picHero.Size = new System.Drawing.Size(850, 400);
@@ -82,7 +81,6 @@
             // 
             // UC_Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.lblHelp);

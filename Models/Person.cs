@@ -11,11 +11,11 @@ namespace Hospital_Management_System_SQL.Models
         public String FullName { get; set; }
         public String Phone { get; set; }
         public String Gender { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
         public override string ToString()
         {
-            return FullName;
+            return FullName ?? string.Empty;
         }
     }
 }
