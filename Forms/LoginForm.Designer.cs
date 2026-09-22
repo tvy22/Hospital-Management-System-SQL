@@ -53,21 +53,21 @@
             this.pnlRight.Controls.Add(this.lineUser);
             this.pnlRight.Controls.Add(this.linePass);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRight.Location = new System.Drawing.Point(565, 0);
+            this.pnlRight.Location = new System.Drawing.Point(575, 0);
             this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRight.Name = "pnlRight";
-            this.pnlRight.Size = new System.Drawing.Size(719, 738);
+            this.pnlRight.Size = new System.Drawing.Size(709, 738);
             this.pnlRight.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(35)))), ((int)(((byte)(64)))));
-            this.lblTitle.Location = new System.Drawing.Point(28, 129);
+            this.lblTitle.Location = new System.Drawing.Point(62, 126);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(627, 50);
+            this.lblTitle.Size = new System.Drawing.Size(578, 46);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "HOSPITAL MANAGEMENT SYSTEM";
             // 
@@ -198,7 +198,7 @@
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(565, 738);
+            this.pnlLeft.Size = new System.Drawing.Size(575, 738);
             this.pnlLeft.TabIndex = 1;
             // 
             // LoginForm
