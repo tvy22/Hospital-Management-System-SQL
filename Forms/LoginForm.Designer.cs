@@ -30,13 +30,13 @@
         {
             this.pnlRight = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblPass = new System.Windows.Forms.Label();
             this.txtPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.lineUser = new System.Windows.Forms.Panel();
             this.linePass = new System.Windows.Forms.Panel();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.lblPass = new System.Windows.Forms.Label();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.pnlRight.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,19 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "HOSPITAL MANAGEMENT SYSTEM";
             // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUser.Location = new System.Drawing.Point(79, 258);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(98, 20);
+            this.lblUser.TabIndex = 1;
+            this.lblUser.Text = "Username     ";
+            // 
             // txtUser
             // 
             this.txtUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(221)))), ((int)(((byte)(233)))));
@@ -95,6 +108,19 @@
             this.txtUser.Size = new System.Drawing.Size(533, 55);
             this.txtUser.TabIndex = 2;
             this.txtUser.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblPass.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.lblPass.Location = new System.Drawing.Point(79, 374);
+            this.lblPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(73, 20);
+            this.lblPass.TabIndex = 4;
+            this.lblPass.Text = "Password";
             // 
             // txtPass
             // 
@@ -164,35 +190,9 @@
             this.linePass.TabIndex = 6;
             this.linePass.Visible = false;
             // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblUser.Location = new System.Drawing.Point(79, 258);
-            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(98, 20);
-            this.lblUser.TabIndex = 1;
-            this.lblUser.Text = "Username     ";
-            // 
-            // lblPass
-            // 
-            this.lblPass.AutoSize = true;
-            this.lblPass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblPass.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lblPass.Location = new System.Drawing.Point(79, 374);
-            this.lblPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(73, 20);
-            this.lblPass.TabIndex = 4;
-            this.lblPass.Text = "Password";
-            // 
             // pnlLeft
             // 
-            this.pnlLeft.BackgroundImage = global::Hospital_Management_System_SQL.Properties.Resources.login_bg;
+            this.pnlLeft.BackgroundImage = global::Hospital_Management_System_SQL.Properties.Resources.doctors2;
             this.pnlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
