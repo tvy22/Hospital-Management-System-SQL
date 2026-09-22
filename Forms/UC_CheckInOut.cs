@@ -177,6 +177,9 @@ namespace Hospital_Management_System_SQL.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            Doctor selectedDoc = cmbDoctor.SelectedItem as Doctor;
+            decimal doctorFee = selectedDoc?.ConsultationFee ?? 0.00m;
+
             if (!IsValidCheckIn()) return;
 
             Checkin newApp = new Checkin
@@ -188,8 +191,8 @@ namespace Hospital_Management_System_SQL.Forms
                 DocSpeciality = cmbSpeciality.SelectedItem.ToString(),
                 Date = dtpAppTime.Value,
                 RoomNumber = txtRoom.Text,
-                Reason = txtReason.Text,
-                Fee = 50.00m
+                Reason = Reason.Text,
+                Fee = doctorFee
             };
 
             _checkInOutRepo.Save(newApp);
