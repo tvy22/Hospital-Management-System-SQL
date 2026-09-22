@@ -92,10 +92,12 @@
     <Compile Include="Interfaces\IDoctorRepository.cs" />
     <Compile Include="Interfaces\IEntityRepository.cs" />
     <Compile Include="Interfaces\IPatientRepository.cs" />
+    <Compile Include="Interfaces\IStaffRepository.cs" />
     <Compile Include="Logic\CheckInOutRepository.cs" />
     <Compile Include="Logic\DatabaseHelper.cs" />
     <Compile Include="Logic\DoctorRepository.cs" />
     <Compile Include="Logic\PatientRepository.cs" />
+    <Compile Include="Logic\StaffRepository.cs" />
     <Compile Include="Models\Checkin.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\Patient.cs" />

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Hospital_Management_System_SQL.Interfaces;
+using Hospital_Management_System_SQL.Logic;
+using Hospital_Management_System_SQL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,11 @@ namespace Hospital_Management_System_SQL.Forms
 {
     public partial class LoginForm : Form
     {
+        private readonly IStaffRepository _staffRepository;
         public LoginForm()
         {
             InitializeComponent();
+            _staffRepository = new StaffRepository();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -28,7 +33,9 @@ namespace Hospital_Management_System_SQL.Forms
                 return;
             }
 
-            if(user == "admin" && pass == "123")
+            Staff loggedInStaff = _staffRepository.Login(user, pass);
+
+            if (loggedInStaff != null)
             {
                 this.Hide();
                 MainDashboard main = new MainDashboard();
@@ -36,7 +43,7 @@ namespace Hospital_Management_System_SQL.Forms
             }
             else
             {
-                MessageBox.Show("Invalid username and password.", "Login Failed");
+                MessageBox.Show("Invalid username or password.", "Login Failed");
                 txtUser.Focus();
             }
         }
