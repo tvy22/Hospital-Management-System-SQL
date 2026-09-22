@@ -30,20 +30,20 @@
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.btnAppointments = new System.Windows.Forms.Button();
             this.btnPatients = new System.Windows.Forms.Button();
             this.btnDoctors = new System.Windows.Forms.Button();
             this.lblBrand = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSidebar
             // 
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.pnlSidebar.Controls.Add(this.button1);
             this.pnlSidebar.Controls.Add(this.btnLogout);
+            this.pnlSidebar.Controls.Add(this.button1);
             this.pnlSidebar.Controls.Add(this.btnAppointments);
             this.pnlSidebar.Controls.Add(this.btnPatients);
             this.pnlSidebar.Controls.Add(this.btnDoctors);
@@ -69,23 +69,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnLogout
-            // 
-            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnLogout.Location = new System.Drawing.Point(0, 630);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(220, 70);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "   Logout";
-            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // btnAppointments
             // 
             this.btnAppointments.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -98,7 +81,7 @@
             this.btnAppointments.Name = "btnAppointments";
             this.btnAppointments.Size = new System.Drawing.Size(220, 70);
             this.btnAppointments.TabIndex = 3;
-            this.btnAppointments.Text = "   Check-in/out";
+            this.btnAppointments.Text = "   Appointments";
             this.btnAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAppointments.UseVisualStyleBackColor = true;
             this.btnAppointments.Click += new System.EventHandler(this.btnAppointments_Click);
@@ -146,7 +129,7 @@
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(220, 120);
             this.lblBrand.TabIndex = 0;
-            this.lblBrand.Text = "MED-SYSTEM";
+            this.lblBrand.Text = "HOSPITAL";
             this.lblBrand.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlContent
@@ -157,6 +140,19 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(980, 700);
             this.pnlContent.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(71)))), ((int)(((byte)(87)))));
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(27, 634);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(161, 45);
+            this.btnLogout.TabIndex = 17;
+            this.btnLogout.Text = "LOGOUT";
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // MainDashboard
             // 
@@ -181,10 +177,10 @@
         private System.Windows.Forms.Button btnDoctors;
         private System.Windows.Forms.Button btnPatients;
         private System.Windows.Forms.Button btnAppointments;
-        private System.Windows.Forms.Button btnLogout; // New
 
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private Guna.UI2.WinForms.Guna2Button btnLogout;
     }
 }
