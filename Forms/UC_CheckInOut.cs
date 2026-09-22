@@ -71,7 +71,7 @@ namespace Hospital_Management_System_SQL.Forms
 
         private void LoadDataForCheckIn()
         {
-            txtAppID.Text = _checkInOutRepo.GenerateNextAppID();
+            txtAppID.Text = _checkInOutRepo.GenerateNextID();
 
             allPatients = _patientRepo.GetAll();
             allDoctors = _doctorRepo.GetAll();
@@ -192,13 +192,13 @@ namespace Hospital_Management_System_SQL.Forms
                 Fee = 50.00m
             };
 
-            _checkInOutRepo.RegisterCheckIn(newApp);
+            _checkInOutRepo.Save(newApp);
 
             MessageBox.Show("Appointment Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ClearCheckInFields();
             LoadCheckins();
-            txtAppID.Text = _checkInOutRepo.GenerateNextAppID();
+            txtAppID.Text = _checkInOutRepo.GenerateNextID();
         }
 
         private void ClearCheckInFields()
@@ -353,6 +353,14 @@ namespace Hospital_Management_System_SQL.Forms
         {
             dgvActiveVisits.ClearSelection();
             ClearFields();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            using(VisitHistoryForm historyForm = new VisitHistoryForm())
+            {
+                historyForm.ShowDialog(this);
+            }
         }
     }
 }
