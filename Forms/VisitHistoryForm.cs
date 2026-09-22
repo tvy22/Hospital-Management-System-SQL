@@ -38,9 +38,9 @@ namespace Hospital_Management_System_SQL.Forms
                 if (dgvVisitHistory.Columns["RoomNumber"] != null) dgvVisitHistory.Columns["RoomNumber"].HeaderText = "Room";
                 if (dgvVisitHistory.Columns["Reason"] != null) dgvVisitHistory.Columns["Reason"].HeaderText = "Reason";
                 if (dgvVisitHistory.Columns["Fee"] != null) dgvVisitHistory.Columns["Fee"].DefaultCellStyle.Format = "c";
+                if (dgvVisitHistory.Columns["Date"] != null) dgvVisitHistory.Columns["Date"].HeaderText = "Date";
 
                 // Hide Extra Columns
-                if (dgvVisitHistory.Columns["Date"] != null) dgvVisitHistory.Columns["Date"].Visible = false;
                 if (dgvVisitHistory.Columns["Status"] != null) dgvVisitHistory.Columns["Status"].Visible = false;
                 if (dgvVisitHistory.Columns["CheckoutDate"] != null) dgvVisitHistory.Columns["CheckoutDate"].Visible = false;
             }
