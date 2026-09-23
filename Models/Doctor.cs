@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Hospital_Management_System_SQL.Models
 {
-    [Serializable]
     public class Doctor : Person
     {
         public string DoctorID { get; set; }
