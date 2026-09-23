@@ -15,7 +15,7 @@ namespace Hospital_Management_System_SQL.Logic
         {
             List<Doctor> list = new List<Doctor>();
             string query = "SELECT DoctorID, FullName, Email, Phone, Speciality, RoomNumber, " +
-                           "ConsultationFee, DateOfBirth, Gender, Status, Shift, DoctorImage FROM Doctors";
+                           "ConsultationFee, DateOfBirth, Gender, Status, Shift, DoctorImage FROM Doctors WHERE Status = 'Available'";
 
             using (SqlConnection conn = DatabaseHelper.GetConnection())
             {
