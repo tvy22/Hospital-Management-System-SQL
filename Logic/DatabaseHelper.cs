@@ -6,7 +6,7 @@ namespace Hospital_Management_System_SQL.Logic
 {
     public static class DatabaseHelper
     {
-        private static readonly string connectionString = @"Server=localhost;Database=HospitalDB;Trusted_Connection=True;";
+        private static readonly string connectionString = @"Server=LAPTOP-QGUJ85C2\SQLEXPRESS;Database=HospitalDB;Trusted_Connection=True;";
 
         public static SqlConnection GetConnection()
         {

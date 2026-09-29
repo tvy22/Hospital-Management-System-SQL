@@ -71,7 +71,7 @@
             // 
             // picHero
             // 
-            this.picHero.Image = global::Hospital_Management_System_SQL.Properties.Resources.hospital3;
+            this.picHero.Image = global::Hospital_Management_System_SQL.Properties.Resources.hospital;
             this.picHero.Location = new System.Drawing.Point(50, 150);
             this.picHero.Name = "picHero";
             this.picHero.Size = new System.Drawing.Size(850, 400);

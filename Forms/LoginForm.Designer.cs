@@ -192,7 +192,7 @@
             // 
             // pnlLeft
             // 
-            this.pnlLeft.BackgroundImage = global::Hospital_Management_System_SQL.Properties.Resources.doctors2;
+            this.pnlLeft.BackgroundImage = global::Hospital_Management_System_SQL.Properties.Resources.doctors;
             this.pnlLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);

@@ -63,9 +63,9 @@ namespace Hospital_Management_System_SQL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap doctors2 {
+        internal static System.Drawing.Bitmap doctors {
             get {
-                object obj = ResourceManager.GetObject("doctors2", resourceCulture);
+                object obj = ResourceManager.GetObject("doctors", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,19 +73,9 @@ namespace Hospital_Management_System_SQL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hospital3 {
+        internal static System.Drawing.Bitmap hospital {
             get {
-                object obj = ResourceManager.GetObject("hospital3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap login_bg {
-            get {
-                object obj = ResourceManager.GetObject("login_bg", resourceCulture);
+                object obj = ResourceManager.GetObject("hospital", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
