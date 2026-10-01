@@ -109,18 +109,23 @@ namespace Hospital_Management_System_SQL.Forms
         {
             string sp = cmbSpeciality.SelectedItem?.ToString();
 
-            if (sp == "Select speciality" || string.IsNullOrEmpty(sp))
+            List<Doctor> filteredList;
+
+            if (string.IsNullOrEmpty(sp) || sp == "Select speciality")
             {
-                var list = allDoctors.ToList();
-                list.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor" });
-                cmbDoctor.DataSource = list;
+                filteredList = allDoctors?.ToList() ?? new List<Doctor>();
             }
             else
             {
-                var filteredDoctors = allDoctors.Where(d => d.Speciality == sp).ToList();
-                filteredDoctors.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor" });
-                cmbDoctor.DataSource = filteredDoctors;
+                filteredList = allDoctors?.Where(d => d.Speciality == sp).ToList() ?? new List<Doctor>();
             }
+
+            filteredList.Insert(0, new Doctor { DoctorID = "0", FullName = "Select Doctor" });
+
+            cmbDoctor.DisplayMember = "FullName";
+            cmbDoctor.ValueMember = "DoctorID";
+
+            cmbDoctor.DataSource = filteredList;
             cmbDoctor.SelectedIndex = 0;
         }
 
@@ -187,7 +192,8 @@ namespace Hospital_Management_System_SQL.Forms
                 AppID = txtAppID.Text,
                 PatientID = txtPatientID.Text,
                 PatientName = txtPatientName.Text,
-                DocName = cmbDoctor.SelectedItem.ToString(),
+                DoctorID = selectedDoc?.DoctorID,
+                DocName = selectedDoc?.FullName,
                 DocSpeciality = cmbSpeciality.SelectedItem.ToString(),
                 Date = dtpAppTime.Value,
                 RoomNumber = txtRoom.Text,

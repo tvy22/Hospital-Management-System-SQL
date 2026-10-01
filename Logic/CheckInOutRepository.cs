@@ -11,13 +11,13 @@ namespace Hospital_Management_System_SQL.Logic
         // 1. Get Active Visits (for Check-Out Grid)
         public List<Checkin> GetActiveVisits()
         {
-            return GetVisitsByQuery("SELECT AppID, PatientID, PatientName, DocName, DocSpeciality, Date, RoomNumber, Reason, Status, Fee FROM CheckIns WHERE Status = 'Active' OR Status IS NULL");
+            return GetVisitsByQuery("SELECT AppID, PatientID, PatientName, DoctorID, DocName, DocSpeciality, Date, RoomNumber, Reason, Status, Fee FROM CheckIns WHERE Status = 'Active' OR Status IS NULL");
         }
 
         // 2. Get Completed Visits (for Visit History)
         public List<Checkin> GetCompletedVisits()
         {
-            return GetVisitsByQuery("SELECT AppID, PatientID, PatientName, DocName, DocSpeciality, Date, RoomNumber, Reason, Status, Fee FROM CheckIns WHERE Status = 'Completed'");
+            return GetVisitsByQuery("SELECT AppID, PatientID, PatientName, DoctorID, DocName, DocSpeciality, Date, RoomNumber, Reason, Status, Fee FROM CheckIns WHERE Status = 'Completed'");
         }
 
         // 3. IEntityRepository<Checkin> - GetAll (defaults to active visits)
@@ -29,8 +29,8 @@ namespace Hospital_Management_System_SQL.Logic
         // 4. IEntityRepository<Checkin> - Save
         public void Save(Checkin entity)
         {
-            string query = @"INSERT INTO CheckIns (AppID, PatientID, PatientName, DocName, DocSpeciality, Date, RoomNumber, Reason, Status, Fee)
-                            VALUES (@AppID, @PatientID, @PatientName, @DocName, @DocSpeciality, @Date, @RoomNumber, @Reason, 'Active', @Fee)";
+            string query = @"INSERT INTO CheckIns (AppID, PatientID, PatientName, DoctorID, DocName, DocSpeciality, Date, RoomNumber, Reason, Status, Fee)
+                            VALUES (@AppID, @PatientID, @PatientName, @DoctorID, @DocName, @DocSpeciality, @Date, @RoomNumber, @Reason, 'Active', @Fee)";
 
             using (SqlConnection conn = DatabaseHelper.GetConnection())
             {
@@ -38,6 +38,7 @@ namespace Hospital_Management_System_SQL.Logic
                 cmd.Parameters.AddWithValue("@AppID", entity.AppID);
                 cmd.Parameters.AddWithValue("@PatientID", entity.PatientID ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@PatientName", entity.PatientName ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@DoctorID", entity.DoctorID ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@DocName", entity.DocName ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@DocSpeciality", entity.DocSpeciality ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Date", entity.Date);
@@ -127,6 +128,7 @@ namespace Hospital_Management_System_SQL.Logic
                             AppID = reader["AppID"].ToString(),
                             PatientID = reader["PatientID"].ToString(),
                             PatientName = reader["PatientName"].ToString(),
+                            DoctorID = reader["DoctorID"].ToString(),
                             DocName = reader["DocName"].ToString(),
                             DocSpeciality = reader["DocSpeciality"].ToString(),
                             Date = Convert.ToDateTime(reader["Date"]),
