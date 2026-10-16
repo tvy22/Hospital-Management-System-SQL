@@ -229,6 +229,23 @@ namespace Hospital_Management_System_SQL.Forms
             errorProvider1.Clear();
         }
 
+        private void txtSearchPatient_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearchPatient.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                dgvPatient.DataSource = allPatients;
+            }
+            else
+            {
+                dgvPatient.DataSource = allPatients.Where(p =>
+                    p.PatientID.ToLower().Contains(searchText) ||
+                    p.FullName.ToLower().Contains(searchText)
+                ).ToList();
+            }
+        }
+
         // ================= CHECK-OUT LOGIC =================
 
         private void LoadCheckins()
